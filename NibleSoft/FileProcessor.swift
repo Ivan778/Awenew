@@ -21,24 +21,24 @@ public class FileProcessor {
     }
     
     //Сохраняет в файл предыдущие запросы
-    class func saveChecklistItems(items: [[String: String]]) {
+    class func saveChecklistItems(items: [[String: String]], key: String) {
         let data = NSMutableData()
         let archiver = NSKeyedArchiver(forWritingWith: data)
         
-        archiver.encode(items, forKey: "PreviousRequests")
+        archiver.encode(items, forKey: key)
         archiver.finishEncoding()
         data.write(to: dataFilePath(), atomically: true)
     }
     
     //Считывает из файла предыдущие запросы
-    class func loadChecklistItems() -> [[String: String]] {
+    class func loadChecklistItems(key: String) -> [[String: String]] {
         var items = [[String: String]]()
         
         let path = dataFilePath()
         
         if let data = try? Data(contentsOf: path) {
             let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
-            items = unarchiver.decodeObject(forKey: "PreviousRequests") as! [[String: String]]
+            items = unarchiver.decodeObject(forKey: key) as! [[String: String]]
             unarchiver.finishDecoding()
         }
         

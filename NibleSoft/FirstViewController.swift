@@ -32,18 +32,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, WeatherR
     //
     var lastLocationError: Error?
     
-    var wrote = 0
-    
     // Для получения погоды
     var weather: WeatherReceiver!
     // Для получения адреса
     var reverseGeocoder: GoogleGeocoder!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        FileProcessor.saveChecklistItems(items: [[String: String]]())
-        
+    func blockBarButtons() {
         let tabBarControllerItems = self.tabBarController?.tabBar.items
         
         if let tabArray = tabBarControllerItems {
@@ -53,15 +47,23 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, WeatherR
             tabBarItem1.isEnabled = false
             tabBarItem2.isEnabled = false
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        blockBarButtons()
         
         weather = WeatherReceiver(delegate: self)
         reverseGeocoder = GoogleGeocoder(delegate: self)
         
         latitudeLabel.text = ""
-        
         countryLabel.text = ""
         
-        getLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
     }
 
@@ -92,9 +94,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, WeatherR
     // Принимает данные об ошибке, из-за которой не была определена погода, и выводит её на экран
     func didNotGetWeather(error: NSError) {
         DispatchQueue.main.async {
-            self.temperatureAndDescriptionLabel.text = "Проверьте соединение с интернетом"
-            self.humidityLabel.text = "Проверьте соединение с интернетом"
-            self.pressureLabel.text = "Проверьте соединение с интернетом"
+            self.temperatureAndDescriptionLabel.text = "-/-"
+            self.humidityLabel.text = "-/-"
+            self.pressureLabel.text = "-/-"
         }
     }
     
@@ -103,72 +105,61 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, WeatherR
         DispatchQueue.main.async {
             self.countryLabel.text = adress
             
-            self.wrote += 1
+            // Будет хранить текущий запрос
+            var currentItem = [String: String]()
+            // Массив словарей с предыдущими запросами
+            var allItems = [[String: String]]()
             
-            if self.wrote == 2 {
-                // Будет хранить текущий запрос
-                var currentItem = [String: String]()
-                // Массив словарей с предыдущими запросами
-                var allItems = [[String: String]]()
+            // Получаем дату в виде строки
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .short
+            
+            //Получили строку из времени
+            let date = formatter.string(from: Date())
+            
+            // Записываем дату запроса
+            currentItem["Date"] = date
+            // Записываем адрес, при котором был сделан запрос
+            currentItem["Adress"] = adress
+            // Записываем широту
+            currentItem["Latitude"] = String(format: "%.7f", (self.location?.coordinate.latitude)!)
+            // Записываем долготу
+            currentItem["Longitude"] = String(format: "%.7f", (self.location?.coordinate.longitude)!)
+            
+            allItems = FileProcessor.loadChecklistItems(key: "PreviousRequests")
+            allItems.append(currentItem)
+            
+            FileProcessor.saveChecklistItems(items: allItems, key: "PreviousRequests")
+            
+            let tabBarControllerItems = self.tabBarController?.tabBar.items
+            
+            if let tabArray = tabBarControllerItems {
+                let tabBarItem1 = tabArray[0]
+                let tabBarItem2 = tabArray[1]
                 
-                // Получаем дату в виде строки
-                let formatter = DateFormatter()
-                formatter.dateStyle = .medium
-                formatter.timeStyle = .short
-                
-                //Получили строку из времени
-                let date = formatter.string(from: Date())
-                
-                // Записываем дату запроса
-                currentItem["Date"] = date
-                // Записываем адрес, при котором был сделан запрос
-                currentItem["Adress"] = adress
-                // Записываем широту
-                currentItem["Latitude"] = String(format: "%.7f", (self.location?.coordinate.latitude)!)
-                // Записываем долготу
-                currentItem["Longitude"] = String(format: "%.7f", (self.location?.coordinate.longitude)!)
-                
-                allItems = FileProcessor.loadChecklistItems()
-                allItems.append(currentItem)
-                
-                FileProcessor.saveChecklistItems(items: allItems)
-                
-                let tabBarControllerItems = self.tabBarController?.tabBar.items
-                
-                if let tabArray = tabBarControllerItems {
-                    let tabBarItem1 = tabArray[0]
-                    let tabBarItem2 = tabArray[1]
-                    
-                    tabBarItem1.isEnabled = true
-                    tabBarItem2.isEnabled = true
-                }
-                
+                tabBarItem1.isEnabled = true
+                tabBarItem2.isEnabled = true
             }
+            
         }
     }
     
     // Принимает данные об ошибке, из-за которой не был определён адрес, и выводит её на экран
     func didNotGetAdress(error: NSError) {
         DispatchQueue.main.async {
-            self.countryLabel.text = "Проверьте соединение с интернетом"
+            self.countryLabel.text = "-/-"
+            
+            let tabBarControllerItems = self.tabBarController?.tabBar.items
+            
+            if let tabArray = tabBarControllerItems {
+                let tabBarItem1 = tabArray[0]
+                let tabBarItem2 = tabArray[1]
+                
+                tabBarItem1.isEnabled = true
+                tabBarItem2.isEnabled = true
+            }
         }
-    }
-    
-    // Настраивает locationManager
-    func getLocation() {
-        let authStatus = CLLocationManager.authorizationStatus()
-        if authStatus == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-            return
-        }
-        
-        if authStatus == .denied || authStatus == .restricted {
-            showLocationServicesDeniedAlert()
-            return
-        }
-        
-        startLocationManager()
-        
     }
     
     // Сообщает пользователю информацию о том, что приложение не имеет доступа к геолокации
@@ -189,43 +180,20 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, WeatherR
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError \(error)")
         
-        //
-        if (error as NSError).code == CLError.locationUnknown.rawValue {
-            return
-        }
-        
-        //
+        // Записали ошибку
         lastLocationError = error
-        //
-        stopLocationManager()
-        //
+        // Остановили обновление позиции
+        locationManager.stopUpdatingLocation()
+        // Обновили Label с широтой и долготой
         updateLabels()
-    }
-    
-    //
-    func startLocationManager() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-            updatingLocation = true
-        }
-    }
-    
-    //
-    func stopLocationManager() {
-        if updatingLocation {
-            locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil
-            updatingLocation = false
-        }
     }
     
     // Срабатывает при успешном получении координат
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let newLocation = locations.last!
-        
-        location = newLocation
+        // Запомнили местоположение
+        location = locations[0]
+        // Закончили обновление координат
+        locationManager.stopUpdatingLocation()
         
         lastLocationError = nil
         updateLabels()
