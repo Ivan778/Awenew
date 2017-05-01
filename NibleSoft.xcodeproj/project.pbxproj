@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */; };
+		2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D51EB65CF700F7DD74 /* Weather.swift */; };
+		2C48148A1EB38EDC0076DE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4814891EB38EDC0076DE8C /* AppDelegate.swift */; };
+		2C48148C1EB38EDC0076DE8C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148B1EB38EDC0076DE8C /* FirstViewController.swift */; };
+		2C48148E1EB38EDC0076DE8C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148D1EB38EDC0076DE8C /* SecondViewController.swift */; };
+		2C4814911EB38EDC0076DE8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C48148F1EB38EDC0076DE8C /* Main.storyboard */; };
+		2C4814931EB38EDC0076DE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4814921EB38EDC0076DE8C /* Assets.xcassets */; };
+		2C4814961EB38EDC0076DE8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4814941EB38EDC0076DE8C /* LaunchScreen.storyboard */; };
+		2C5B135C1EB73878003CE904 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B135B1EB73878003CE904 /* Reachability.swift */; };
+		2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B135D1EB73F22003CE904 /* FileProcessor.swift */; };
+		2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherReceiver.swift; sourceTree = "<group>"; };
+		2C29A2D51EB65CF700F7DD74 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		2C4814861EB38EDC0076DE8C /* NibleSoft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NibleSoft.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C4814891EB38EDC0076DE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2C48148B1EB38EDC0076DE8C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		2C48148D1EB38EDC0076DE8C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2C4814901EB38EDC0076DE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2C4814921EB38EDC0076DE8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C4814951EB38EDC0076DE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2C4814971EB38EDC0076DE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C5B135B1EB73878003CE904 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		2C5B135D1EB73F22003CE904 /* FileProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
+		2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleGeocoder.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C4814831EB38EDC0076DE8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C29A2D71EB65CFB00F7DD74 /* WorkingWithWeather */ = {
+			isa = PBXGroup;
+			children = (
+				2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */,
+				2C29A2D51EB65CF700F7DD74 /* Weather.swift */,
+			);
+			name = WorkingWithWeather;
+			sourceTree = "<group>";
+		};
+		2C48147D1EB38EDC0076DE8C = {
+			isa = PBXGroup;
+			children = (
+				2C4814881EB38EDC0076DE8C /* NibleSoft */,
+				2C4814871EB38EDC0076DE8C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C4814871EB38EDC0076DE8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C4814861EB38EDC0076DE8C /* NibleSoft.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C4814881EB38EDC0076DE8C /* NibleSoft */ = {
+			isa = PBXGroup;
+			children = (
+				2C5B135F1EB73FC5003CE904 /* UsefulLibraries */,
+				2CA039A01EB72C0A00CD6222 /* WorkingWithReverseGeocoding */,
+				2C29A2D71EB65CFB00F7DD74 /* WorkingWithWeather */,
+				2C4814A01EB39BC10076DE8C /* ViewControllers */,
+				2C4814891EB38EDC0076DE8C /* AppDelegate.swift */,
+				2C48148F1EB38EDC0076DE8C /* Main.storyboard */,
+				2C4814921EB38EDC0076DE8C /* Assets.xcassets */,
+				2C4814941EB38EDC0076DE8C /* LaunchScreen.storyboard */,
+				2C4814971EB38EDC0076DE8C /* Info.plist */,
+			);
+			path = NibleSoft;
+			sourceTree = "<group>";
+		};
+		2C4814A01EB39BC10076DE8C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C48148B1EB38EDC0076DE8C /* FirstViewController.swift */,
+				2C48148D1EB38EDC0076DE8C /* SecondViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2C5B135F1EB73FC5003CE904 /* UsefulLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				2C5B135B1EB73878003CE904 /* Reachability.swift */,
+				2C5B135D1EB73F22003CE904 /* FileProcessor.swift */,
+			);
+			name = UsefulLibraries;
+			sourceTree = "<group>";
+		};
+		2CA039A01EB72C0A00CD6222 /* WorkingWithReverseGeocoding */ = {
+			isa = PBXGroup;
+			children = (
+				2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */,
+			);
+			name = WorkingWithReverseGeocoding;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C4814851EB38EDC0076DE8C /* NibleSoft */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "NibleSoft" */;
+			buildPhases = (
+				2C4814821EB38EDC0076DE8C /* Sources */,
+				2C4814831EB38EDC0076DE8C /* Frameworks */,
+				2C4814841EB38EDC0076DE8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NibleSoft;
+			productName = NibleSoft;
+			productReference = 2C4814861EB38EDC0076DE8C /* NibleSoft.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C48147E1EB38EDC0076DE8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = IvanCode;
+				TargetAttributes = {
+					2C4814851EB38EDC0076DE8C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JXCL7H2Z3W;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "NibleSoft" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C48147D1EB38EDC0076DE8C;
+			productRefGroup = 2C4814871EB38EDC0076DE8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C4814851EB38EDC0076DE8C /* NibleSoft */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C4814841EB38EDC0076DE8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4814961EB38EDC0076DE8C /* LaunchScreen.storyboard in Resources */,
+				2C4814931EB38EDC0076DE8C /* Assets.xcassets in Resources */,
+				2C4814911EB38EDC0076DE8C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C4814821EB38EDC0076DE8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C5B135C1EB73878003CE904 /* Reachability.swift in Sources */,
+				2C48148E1EB38EDC0076DE8C /* SecondViewController.swift in Sources */,
+				2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */,
+				2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */,
+				2C48148A1EB38EDC0076DE8C /* AppDelegate.swift in Sources */,
+				2C48148C1EB38EDC0076DE8C /* FirstViewController.swift in Sources */,
+				2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */,
+				2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2C48148F1EB38EDC0076DE8C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C4814901EB38EDC0076DE8C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2C4814941EB38EDC0076DE8C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C4814951EB38EDC0076DE8C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2C4814981EB38EDC0076DE8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2C4814991EB38EDC0076DE8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C48149B1EB38EDC0076DE8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JXCL7H2Z3W;
+				INFOPLIST_FILE = NibleSoft/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.NibleSoft;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2C48149C1EB38EDC0076DE8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JXCL7H2Z3W;
+				INFOPLIST_FILE = NibleSoft/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.NibleSoft;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "NibleSoft" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C4814981EB38EDC0076DE8C /* Debug */,
+				2C4814991EB38EDC0076DE8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "NibleSoft" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C48149B1EB38EDC0076DE8C /* Debug */,
+				2C48149C1EB38EDC0076DE8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C48147E1EB38EDC0076DE8C /* Project object */;
+}
