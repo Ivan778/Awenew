@@ -36,16 +36,16 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     // Для получения адреса
     var reverseGeocoder: GoogleGeocoder!
     
-    // Блокирует кнопки TabBar
-    func blockBarButtons() {
+    // Блокирует/разблокирует кнопки TabBar
+    func lockUnlockBarButtons(value: Bool) {
         let tabBarControllerItems = self.tabBarController?.tabBar.items
         
         if let tabArray = tabBarControllerItems {
             let tabBarItem1 = tabArray[0]
             let tabBarItem2 = tabArray[1]
             
-            tabBarItem1.isEnabled = false
-            tabBarItem2.isEnabled = false
+            tabBarItem1.isEnabled = value
+            tabBarItem2.isEnabled = value
         }
     }
     
@@ -53,7 +53,7 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         super.viewDidLoad()
         
         // Блокируем кнопки TabBar, чтобы пользователь не мог перейти, когда осуществляется подгрузка данных о погоде
-        blockBarButtons()
+        lockUnlockBarButtons(value: false)
         
         //FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousRequests")
         //FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousWeatherRequests")
@@ -62,17 +62,15 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         weather = WeatherReceiver(delegate: self)
         reverseGeocoder = GoogleGeocoder(delegate: self)
         
-        latitudeLabel.text = ""
-        adressLabel.text = ""
-        
         // Инициализируем LocationManager
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        // Считываем значение часа
         let currentHours = NSCalendar.current.component(.hour, from: Date())
-        
+        // Если сейчас тёмное время суток, то делаем фон тёмно-синим
         if (currentHours > 20 || currentHours < 5) {
             self.view.backgroundColor = UIColor.init(red: 25.0/255.0, green: 25.0/255.0, blue: 112.0/255.0, alpha: 1)
         }
@@ -96,8 +94,6 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     
     // Принимает данные о погоде и выводит их на экран
     func didGetWeather(weather: Weather) {
-        print("didGetWeather")
-        
         DispatchQueue.main.async {
             if self.wroteWeather == false {
                 // Записываем данные о погоде в их Label-ы
@@ -106,20 +102,10 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
                 self.pressureLabel.text = "\(weather.pressure) мм рт. ст."
                 self.weatherIconImageView.image = UIImage(named: weather.icon)
                 
-                // Будет хранить текущий запрос
-                var currentItem = [String: String]()
-                // Массив словарей с предыдущими запросами
-                var allItems = [[String: String]]()
+                // Записываем погоду в файл
+                WriteWeatherToFile.write(weather: weather)
                 
-                currentItem["Temperature"] = "\(weather.temperature) °C"
-                currentItem["Humidity"] = "\(weather.humidity) %"
-                currentItem["Pressure"] = "\(weather.pressure) мм рт. ст."
-                currentItem["Icon"] = weather.icon
-                
-                allItems = FileProcessor.loadChecklistItems(key: "PreviousWeatherRequests")
-                allItems.append(currentItem)
-                
-                FileProcessor.saveChecklistItems(items: allItems, key: "PreviousWeatherRequests")
+                // Говорим, что уже была осуществлена запись погоды в файл
                 self.wroteWeather = true
             }
             
@@ -139,52 +125,17 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     
     // Принимает адрес и выводит его на экран
     func didGetAdress(adress: [String]) {
-        print("didGetAdress")
-        
         DispatchQueue.main.async {
             if self.wroteLocation == false {
+                // Отображаем адрес на экран
                 self.adressLabel.text = adress[0]
                 
-                // Будет хранить текущий запрос
-                var currentItem = [String: String]()
-                // Массив словарей с предыдущими запросами
-                var allItems = [[String: String]]()
+                // Пишем адрес в файл
+                WriteAdressToFile.write(adress: adress, latitude: (self.location?.coordinate.latitude)!, longitude: (self.location?.coordinate.longitude)!)
                 
-                // Получаем дату в виде строки
-                let formatter = DateFormatter()
-                formatter.dateStyle = .medium
-                formatter.timeStyle = .short
+                // Разблокировали кнопки
+                self.lockUnlockBarButtons(value: true)
                 
-                //Получили строку из времени
-                let date = formatter.string(from: Date())
-                
-                // Записываем дату запроса
-                currentItem["Date"] = date
-                // Записываем адрес, при котором был сделан запрос
-                currentItem["Adress"] = adress[0]
-                // Записываем широту
-                currentItem["Latitude"] = String(format: "%.7f", (self.location?.coordinate.latitude)!)
-                // Записываем долготу
-                currentItem["Longitude"] = String(format: "%.7f", (self.location?.coordinate.longitude)!)
-                // Записываем город
-                currentItem["City"] = adress[1]
-                // Записываем часы
-                currentItem["Hours"] = String(NSCalendar.current.component(.hour, from: Date()))
-                
-                allItems = FileProcessor.loadChecklistItems(key: "PreviousRequests")
-                allItems.append(currentItem)
-                
-                FileProcessor.saveChecklistItems(items: allItems, key: "PreviousRequests")
-                
-                let tabBarControllerItems = self.tabBarController?.tabBar.items
-                
-                if let tabArray = tabBarControllerItems {
-                    let tabBarItem1 = tabArray[0]
-                    let tabBarItem2 = tabArray[1]
-                    
-                    tabBarItem1.isEnabled = true
-                    tabBarItem2.isEnabled = true
-                }
                 self.wroteLocation = true
             }
             
@@ -199,15 +150,8 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Записываем в Label адреса
         self.adressLabel.text = "-/-"
         
-        let tabBarControllerItems = self.tabBarController?.tabBar.items
-        
-        if let tabArray = tabBarControllerItems {
-            let tabBarItem1 = tabArray[0]
-            let tabBarItem2 = tabArray[1]
-            
-            tabBarItem1.isEnabled = true
-            tabBarItem2.isEnabled = true
-        }
+        // Разблокировали кнопки
+        self.lockUnlockBarButtons(value: true)
     }
     
     // Сообщает пользователю информацию о том, что приложение не имеет доступа к геолокации
@@ -233,16 +177,8 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Обновили Label с широтой и долготой
         updateLabels()
         
-        // Разблокируем кнопки TabBar
-        let tabBarControllerItems = self.tabBarController?.tabBar.items
-        
-        if let tabArray = tabBarControllerItems {
-            let tabBarItem1 = tabArray[0]
-            let tabBarItem2 = tabArray[1]
-            
-            tabBarItem1.isEnabled = true
-            tabBarItem2.isEnabled = true
-        }
+        // Разблокировали кнопки
+        self.lockUnlockBarButtons(value: true)
     }
     
     // Срабатывает при успешном получении координат
@@ -261,7 +197,5 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         self.reverseGeocoder.getAdress(latitude: String(format: "%.5f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.5f", (self.location?.coordinate.longitude)!))
         
     }
-    
 
 }
-

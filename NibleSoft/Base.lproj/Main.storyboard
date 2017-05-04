@@ -13,7 +13,7 @@
         <!--Навигация-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="WeatherAndNavigationViewController" customModule="NibleSoft" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="WeatherAndNavigationViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -78,7 +78,6 @@
                             <constraint firstItem="ufX-jn-Sfa" firstAttribute="top" secondItem="4mN-y0-PEG" secondAttribute="bottom" constant="8" id="vLM-M3-1vN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Навигация" image="compass" id="Gj1-aO-Gcd"/>
                     <navigationItem key="navigationItem" title="Навигация" id="Ch1-h2-6RG"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -92,12 +91,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="307.5" y="-401.40845070422534"/>
+            <point key="canvasLocation" x="1305" y="-401.40845070422534"/>
         </scene>
         <!--История запросов-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="HistoryViewController" customModule="NibleSoft" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="HistoryViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -114,7 +113,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2nU-xp-16N" id="uAM-oj-dom">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLm-K3-DeL">
@@ -158,7 +157,7 @@
         <!--Подробнее-->
         <scene sceneID="EoM-gS-Ux9">
             <objects>
-                <viewController id="v6c-AK-izx" customClass="MoreInfoViewController" customModule="NibleSoft" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="v6c-AK-izx" customClass="MoreInfoViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HeH-gi-bLj"/>
                         <viewControllerLayoutGuide type="bottom" id="dfR-J4-JxP"/>
@@ -252,7 +251,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="Uj9-jL-Sdf"/>
+                        <segue destination="H4R-cU-dL7" kind="relationship" relationship="viewControllers" id="Uj9-jL-Sdf"/>
                         <segue destination="sfR-Zr-Nxl" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
@@ -278,6 +277,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMj-n1-XAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="308" y="356"/>
+        </scene>
+        <!--Навигация-->
+        <scene sceneID="tUW-wA-SgW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H4R-cU-dL7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Навигация" image="compass" id="Gj1-aO-Gcd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z1F-Tg-M6Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="OVT-Nj-G6L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="11u-jo-XwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="307.5" y="-401.40845070422534"/>
         </scene>
     </scenes>
     <resources>

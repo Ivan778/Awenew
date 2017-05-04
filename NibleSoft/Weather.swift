@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Структура для хранения единицы описания погоды
 struct Weather {
     let temperature: Int
     let pressure: Int

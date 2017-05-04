@@ -39,33 +39,37 @@ class GoogleGeocoder {
                     // Получили данные в виде словаря
                     let reverseGeocodeData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject]
                     
+                    // Здесь будем хранить адрес
                     var adress = String()
-                    
-                    if let first = reverseGeocodeData["results"] as? NSArray {
-                        if let value = first[0] as? NSDictionary {
-                            if let d = value["formatted_address"] as? String {
-                                adress = d
+                    // Получили полный адрес (страна, город, улица, номер дома)
+                    if let results = reverseGeocodeData["results"] as? NSArray {
+                        if let results0 = results[0] as? NSDictionary {
+                            if let formatted_address = results0["formatted_address"] as? String {
+                                adress = formatted_address
                             }
                         }
                     }
                     
+                    // Здесь будем хранить город
                     var city = String()
-                    
-                    if let first = reverseGeocodeData["results"] as? NSArray {
-                        if let value = first[0] as? NSDictionary {
-                            if let d = value["address_components"] as? NSArray {
-                                if let c = d[3] as? NSDictionary {
-                                    if let t = c["long_name"] as? String {
-                                        city = t
+                    // Получаем имя города
+                    if let results = reverseGeocodeData["results"] as? NSArray {
+                        if let results0 = results[0] as? NSDictionary {
+                            if let address_components = results0["address_components"] as? NSArray {
+                                if let address_components3 = address_components[3] as? NSDictionary {
+                                    if let long_name = address_components3["long_name"] as? String {
+                                        city = long_name
                                     }
                                 }
                             }
                         }
                     }
                     
-                    print(adress)
-                    print("Город: \(city)")
+                    // Выводим полный адрес и город в консоль
+                    //print(adress)
+                    //print("Город: \(city)")
                     
+                    // Отправляем данные в WeatherAndNavigationViewController
                     self.delegate.didGetAdress(adress: [adress, city])
                     
                 }
@@ -76,6 +80,7 @@ class GoogleGeocoder {
             }
         }
         
+        // Если соединение с интернетом есть, то запускаем сессию, которая отправит запрос на погоду
         if Reachability.isConnectedToNetwork() == true {
             dataTask.resume()
         } else {

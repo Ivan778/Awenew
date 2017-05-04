@@ -59,14 +59,13 @@ class WeatherReceiver {
                         }
                     }
                     
+                    // Создаём структуру с описанием погоды, которую отправим в WeatherAndNavigationViewController
+                    let forWeatherDelegate = Weather(temperature: temperature, pressure: pressure, humidity: humidity, description: description, icon: icon)
+                    // Отправляем данные в WeatherAndNavigationViewController
+                    self.delegate.didGetWeather(weather: forWeatherDelegate)
                     
-                    if Reachability.isConnectedToNetwork() == true {
-                        let forWeatherDelegate = Weather(temperature: temperature, pressure: pressure, humidity: humidity, description: description, icon: icon)
-                        
-                        self.delegate.didGetWeather(weather: forWeatherDelegate)
-                    }
-                    
-                    print("\(temperature) °C, \(description)\nВлажность: \(humidity) %\nДавление: \(pressure) мм рт. ст.")
+                    // Выводим всё в консоль
+                    //print("\(temperature) °C, \(description)\nВлажность: \(humidity) %\nДавление: \(pressure) мм рт. ст.")
                 }
                 catch let jsonError as NSError {
                     self.delegate.didNotGetWeather(error: jsonError)
@@ -74,6 +73,7 @@ class WeatherReceiver {
                 }
             }
         }
+        // Если соединение с интернетом есть, то запускаем сессию, которая отправит запрос на погоду
         if Reachability.isConnectedToNetwork() == true {
             dataTask.resume()
         } else {

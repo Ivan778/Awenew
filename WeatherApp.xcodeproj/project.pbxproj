@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */; };
 		2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D51EB65CF700F7DD74 /* Weather.swift */; };
+		2C32BD0E1EBBB1A1004C282C /* WriteWeatherToFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32BD0D1EBBB1A1004C282C /* WriteWeatherToFile.swift */; };
+		2C32BD101EBBB272004C282C /* WriteAdressToFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32BD0F1EBBB272004C282C /* WriteAdressToFile.swift */; };
 		2C48148A1EB38EDC0076DE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4814891EB38EDC0076DE8C /* AppDelegate.swift */; };
 		2C48148C1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148B1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift */; };
 		2C48148E1EB38EDC0076DE8C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148D1EB38EDC0076DE8C /* HistoryViewController.swift */; };
@@ -24,7 +26,9 @@
 /* Begin PBXFileReference section */
 		2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherReceiver.swift; sourceTree = "<group>"; };
 		2C29A2D51EB65CF700F7DD74 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		2C4814861EB38EDC0076DE8C /* NibleSoft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NibleSoft.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C32BD0D1EBBB1A1004C282C /* WriteWeatherToFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteWeatherToFile.swift; sourceTree = "<group>"; };
+		2C32BD0F1EBBB272004C282C /* WriteAdressToFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAdressToFile.swift; sourceTree = "<group>"; };
+		2C4814861EB38EDC0076DE8C /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4814891EB38EDC0076DE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C48148B1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAndNavigationViewController.swift; sourceTree = "<group>"; };
 		2C48148D1EB38EDC0076DE8C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +65,7 @@
 		2C48147D1EB38EDC0076DE8C = {
 			isa = PBXGroup;
 			children = (
-				2C4814881EB38EDC0076DE8C /* NibleSoft */,
+				2C4814881EB38EDC0076DE8C /* WeatherApp */,
 				2C4814871EB38EDC0076DE8C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,12 +73,12 @@
 		2C4814871EB38EDC0076DE8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C4814861EB38EDC0076DE8C /* NibleSoft.app */,
+				2C4814861EB38EDC0076DE8C /* WeatherApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C4814881EB38EDC0076DE8C /* NibleSoft */ = {
+		2C4814881EB38EDC0076DE8C /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
 				2C5B135F1EB73FC5003CE904 /* UsefulLibraries */,
@@ -87,6 +91,7 @@
 				2C4814941EB38EDC0076DE8C /* LaunchScreen.storyboard */,
 				2C4814971EB38EDC0076DE8C /* Info.plist */,
 			);
+			name = WeatherApp;
 			path = NibleSoft;
 			sourceTree = "<group>";
 		};
@@ -105,6 +110,8 @@
 			children = (
 				2C5B135B1EB73878003CE904 /* Reachability.swift */,
 				2C5B135D1EB73F22003CE904 /* FileProcessor.swift */,
+				2C32BD0D1EBBB1A1004C282C /* WriteWeatherToFile.swift */,
+				2C32BD0F1EBBB272004C282C /* WriteAdressToFile.swift */,
 			);
 			name = UsefulLibraries;
 			sourceTree = "<group>";
@@ -120,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C4814851EB38EDC0076DE8C /* NibleSoft */ = {
+		2C4814851EB38EDC0076DE8C /* WeatherApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "NibleSoft" */;
+			buildConfigurationList = 2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "WeatherApp" */;
 			buildPhases = (
 				2C4814821EB38EDC0076DE8C /* Sources */,
 				2C4814831EB38EDC0076DE8C /* Frameworks */,
@@ -132,9 +139,9 @@
 			);
 			dependencies = (
 			);
-			name = NibleSoft;
+			name = WeatherApp;
 			productName = NibleSoft;
-			productReference = 2C4814861EB38EDC0076DE8C /* NibleSoft.app */;
+			productReference = 2C4814861EB38EDC0076DE8C /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -154,7 +161,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "NibleSoft" */;
+			buildConfigurationList = 2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "WeatherApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -167,7 +174,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C4814851EB38EDC0076DE8C /* NibleSoft */,
+				2C4814851EB38EDC0076DE8C /* WeatherApp */,
 			);
 		};
 /* End PBXProject section */
@@ -191,6 +198,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5B135C1EB73878003CE904 /* Reachability.swift in Sources */,
+				2C32BD101EBBB272004C282C /* WriteAdressToFile.swift in Sources */,
+				2C32BD0E1EBBB1A1004C282C /* WriteWeatherToFile.swift in Sources */,
 				2C48148E1EB38EDC0076DE8C /* HistoryViewController.swift in Sources */,
 				2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */,
 				2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */,
@@ -323,7 +332,7 @@
 				INFOPLIST_FILE = NibleSoft/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.NibleSoft;
+				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -337,7 +346,7 @@
 				INFOPLIST_FILE = NibleSoft/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.NibleSoft;
+				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -346,7 +355,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "NibleSoft" */ = {
+		2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C4814981EB38EDC0076DE8C /* Debug */,
@@ -355,7 +364,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "NibleSoft" */ = {
+		2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C48149B1EB38EDC0076DE8C /* Debug */,

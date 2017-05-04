@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class MoreInfoViewController: UIViewController {
     // Ссылка на ImageView с картинкой погоды
@@ -41,8 +42,9 @@ class MoreInfoViewController: UIViewController {
             self.humidityLabel.text = weather[number]["Humidity"]!
             self.pressureLabel.text = weather[number]["Pressure"]!
             
+            // Считываем значение часа
             let currentHours = Int(location[number]["Hours"]!)!
-            
+            // Если сейчас тёмное время суток, то делаем фон тёмно-синим
             if (currentHours > 20 || currentHours < 5) {
                 self.view.backgroundColor = UIColor.init(red: 25.0/255.0, green: 25.0/255.0, blue: 112.0/255.0, alpha: 1)
             }
@@ -50,6 +52,21 @@ class MoreInfoViewController: UIViewController {
         }
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Если пользователь в первый раз заходит на этот ViewController, то мы сообщаем ему, как из него вернуться назад
+        if UserDefaults.standard.bool(forKey: "SawIt") == false {
+            let title = "Приветствую Вас"
+            let message = "Для того, чтобы перейти назад, просто прикоснитесь к любому месту на экране."
+            
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            
+            self.present(alert, animated: true, completion: nil)
+            UserDefaults.standard.set(true, forKey: "SawIt")
+        }
     }
 
     override func didReceiveMemoryWarning() {

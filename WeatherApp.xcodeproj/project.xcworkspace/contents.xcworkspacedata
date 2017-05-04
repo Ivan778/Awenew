@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:NibleSoft.xcodeproj">
+      location = "self:/Users/ivan/Documents/NibleSoft/WeatherApp.xcodeproj">
    </FileRef>
 </Workspace>

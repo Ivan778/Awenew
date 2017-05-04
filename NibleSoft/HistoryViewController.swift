@@ -30,6 +30,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableWithHistory.delegate = self
         tableWithHistory.dataSource = self
         
+        // Если сейчас тёмное время суток, то делаем фон тёмно-синим
         if (currentHours > 20 || currentHours < 5) {
             self.tableWithHistory.backgroundColor = UIColor.init(red: 25.0/255.0, green: 25.0/255.0, blue: 112.0/255.0, alpha: 1)
         }
@@ -61,19 +62,24 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         dateLabel.text = (allItems[row]["Date"])!
         
         let locationLabel = cell.viewWithTag(1001) as! UILabel
-        locationLabel.text = "\((allItems[row]["City"])!)(\((allItems[row]["Latitude"])!), \((allItems[row]["Longitude"])!))"
+        locationLabel.text = "\((allItems[row]["City"])!) (\((allItems[row]["Latitude"])!), \((allItems[row]["Longitude"])!))"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // Если сейчас тёмное время суток, то делаем цвет текста жёлтым
         if (currentHours > 20 || currentHours < 5) {
             cell.backgroundColor = UIColor.clear
             
+            // Получили ссылку на Label с датой и временем
             let dateLabel = cell.viewWithTag(1000) as! UILabel
+            // Сделали цвет текста жёлтым
             dateLabel.textColor = UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1)
             
+            // Получили ссылку на Label с координатами
             let locationLabel = cell.viewWithTag(1001) as! UILabel
+            // Сделали цвет текста жёлтым
             locationLabel.textColor = UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1)
             
         }
@@ -104,4 +110,3 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
 
 }
-
