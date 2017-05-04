@@ -62,7 +62,7 @@ class WeatherReceiver {
                     
                     if Reachability.isConnectedToNetwork() == true {
                         let forWeatherDelegate = Weather(temperature: temperature, pressure: pressure, humidity: humidity, description: description, icon: icon)
-                    
+                        
                         self.delegate.didGetWeather(weather: forWeatherDelegate)
                     }
                     
@@ -74,8 +74,11 @@ class WeatherReceiver {
                 }
             }
         }
-        
-        dataTask.resume()
+        if Reachability.isConnectedToNetwork() == true {
+            dataTask.resume()
+        } else {
+            self.delegate.didNotGetWeather(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
+        }
         
     }
     

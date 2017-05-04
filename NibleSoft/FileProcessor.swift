@@ -16,8 +16,8 @@ public class FileProcessor {
     }
     
     //Путь к файлу Checklist.plist, в котором мы будем хранить наши дела
-    class func dataFilePath() -> URL {
-        return documentsDirectory().appendingPathComponent("PreviousRequests.plist")
+    class func dataFilePath(name: String) -> URL {
+        return documentsDirectory().appendingPathComponent("\(name).plist")
     }
     
     //Сохраняет в файл предыдущие запросы
@@ -27,14 +27,14 @@ public class FileProcessor {
         
         archiver.encode(items, forKey: key)
         archiver.finishEncoding()
-        data.write(to: dataFilePath(), atomically: true)
+        data.write(to: dataFilePath(name: key), atomically: true)
     }
     
     //Считывает из файла предыдущие запросы
     class func loadChecklistItems(key: String) -> [[String: String]] {
         var items = [[String: String]]()
         
-        let path = dataFilePath()
+        let path = dataFilePath(name: key)
         
         if let data = try? Data(contentsOf: path) {
             let unarchiver = NSKeyedUnarchiver(forReadingWith: data)

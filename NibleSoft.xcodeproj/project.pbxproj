@@ -10,14 +10,15 @@
 		2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */; };
 		2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D51EB65CF700F7DD74 /* Weather.swift */; };
 		2C48148A1EB38EDC0076DE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4814891EB38EDC0076DE8C /* AppDelegate.swift */; };
-		2C48148C1EB38EDC0076DE8C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148B1EB38EDC0076DE8C /* FirstViewController.swift */; };
-		2C48148E1EB38EDC0076DE8C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148D1EB38EDC0076DE8C /* SecondViewController.swift */; };
+		2C48148C1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148B1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift */; };
+		2C48148E1EB38EDC0076DE8C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48148D1EB38EDC0076DE8C /* HistoryViewController.swift */; };
 		2C4814911EB38EDC0076DE8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C48148F1EB38EDC0076DE8C /* Main.storyboard */; };
 		2C4814931EB38EDC0076DE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4814921EB38EDC0076DE8C /* Assets.xcassets */; };
 		2C4814961EB38EDC0076DE8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4814941EB38EDC0076DE8C /* LaunchScreen.storyboard */; };
 		2C5B135C1EB73878003CE904 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B135B1EB73878003CE904 /* Reachability.swift */; };
 		2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B135D1EB73F22003CE904 /* FileProcessor.swift */; };
 		2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */; };
+		2CACE4261EBA0A8100AC3A1E /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +26,8 @@
 		2C29A2D51EB65CF700F7DD74 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2C4814861EB38EDC0076DE8C /* NibleSoft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NibleSoft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4814891EB38EDC0076DE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C48148B1EB38EDC0076DE8C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2C48148D1EB38EDC0076DE8C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2C48148B1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAndNavigationViewController.swift; sourceTree = "<group>"; };
+		2C48148D1EB38EDC0076DE8C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2C4814901EB38EDC0076DE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C4814921EB38EDC0076DE8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C4814951EB38EDC0076DE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +35,7 @@
 		2C5B135B1EB73878003CE904 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2C5B135D1EB73F22003CE904 /* FileProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
 		2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleGeocoder.swift; sourceTree = "<group>"; };
+		2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +93,9 @@
 		2C4814A01EB39BC10076DE8C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C48148B1EB38EDC0076DE8C /* FirstViewController.swift */,
-				2C48148D1EB38EDC0076DE8C /* SecondViewController.swift */,
+				2C48148B1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift */,
+				2C48148D1EB38EDC0076DE8C /* HistoryViewController.swift */,
+				2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -188,11 +191,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5B135C1EB73878003CE904 /* Reachability.swift in Sources */,
-				2C48148E1EB38EDC0076DE8C /* SecondViewController.swift in Sources */,
+				2C48148E1EB38EDC0076DE8C /* HistoryViewController.swift in Sources */,
 				2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */,
 				2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */,
 				2C48148A1EB38EDC0076DE8C /* AppDelegate.swift in Sources */,
-				2C48148C1EB38EDC0076DE8C /* FirstViewController.swift in Sources */,
+				2C48148C1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift in Sources */,
+				2CACE4261EBA0A8100AC3A1E /* MoreInfoViewController.swift in Sources */,
 				2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */,
 				2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */,
 			);

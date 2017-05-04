@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GoogleGeocoderDelegate {
-    func didGetAdress(adress: String)
+    func didGetAdress(adress: [String])
     func didNotGetAdress(error: NSError)
 }
 
@@ -49,13 +49,24 @@ class GoogleGeocoder {
                         }
                     }
                     
-                    print(adress)
+                    var city = String()
                     
-                    if Reachability.isConnectedToNetwork() == true {
-                        self.delegate.didGetAdress(adress: adress)
-                    } else {
-                        self.delegate.didGetAdress(adress: "Не было соединения")
+                    if let first = reverseGeocodeData["results"] as? NSArray {
+                        if let value = first[0] as? NSDictionary {
+                            if let d = value["address_components"] as? NSArray {
+                                if let c = d[3] as? NSDictionary {
+                                    if let t = c["long_name"] as? String {
+                                        city = t
+                                    }
+                                }
+                            }
+                        }
                     }
+                    
+                    print(adress)
+                    print("Город: \(city)")
+                    
+                    self.delegate.didGetAdress(adress: [adress, city])
                     
                 }
                 catch let jsonError as NSError {
@@ -65,6 +76,12 @@ class GoogleGeocoder {
             }
         }
         
-        dataTask.resume()
+        if Reachability.isConnectedToNetwork() == true {
+            dataTask.resume()
+        } else {
+            self.delegate.didNotGetAdress(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
+        }
+        
+        
     }
 }
