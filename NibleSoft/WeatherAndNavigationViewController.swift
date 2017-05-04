@@ -55,8 +55,8 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Блокируем кнопки TabBar, чтобы пользователь не мог перейти, когда осуществляется подгрузка данных о погоде
         blockBarButtons()
         
-        FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousRequests")
-        FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousWeatherRequests")
+        //FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousRequests")
+        //FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousWeatherRequests")
         
         // Для протоколов
         weather = WeatherReceiver(delegate: self)

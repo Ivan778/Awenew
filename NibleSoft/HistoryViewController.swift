@@ -67,7 +67,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (currentHours < 20 || currentHours < 5) {
+        if (currentHours > 20 || currentHours < 5) {
             cell.backgroundColor = UIColor.clear
             
             let dateLabel = cell.viewWithTag(1000) as! UILabel
