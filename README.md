@@ -19,4 +19,4 @@
 
 Данный проект является продолжением уже существующей версии. Ниже представлен интерфейс на данный момент:
 
-![alt text](AppScreenShots/MainScreen.tiff "Главный экран")
+![Alt text](AppScreenShots/MainScreen.png "Главный экран")
