@@ -25,7 +25,7 @@
 
 Ниже представлены скетчи обновлённого приложения:
 
-![Alt text](AppScreenShots/WeatherSearch.png "Поиск погоды)
+![Alt text](AppScreenShots/WeatherSearch.png "Поиск погоды")
 ![Alt text](AppScreenShots/News.png "Новости")
 
 ### 2.3 Характеристика пользователей
