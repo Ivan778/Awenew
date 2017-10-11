@@ -1,45 +1,49 @@
-# Требования к проекту
+# Requirements Document
 
-# 1 Введение
+# 1 Introduction
 
-Целью разработки является приложение для мобильных устройств под управлением операционной системы iOS, которое предоставляет пользователю доступ к актуальным новостям, погоде и текущему местоположению. 
+The main goal of this project is to develop iOS application, which provides user with such useful information, as latest news, weather forecast and its current location.
 
-# 2 Требования пользователя
-### 2.1 Программные интерфейсы
+# 2 User Requirements
+### 2.1 Software Interfaces
 
-Приложение будет написано на языке Swift в Xcode 8 с использованием Google API (для реверс-геокодинга, т.к. нативный геокодинг работает не для всех стран), OpenWeatherMap API (получение данных о погоде) и BBC News API (получение новостей).
+Application will be written in Swift in Xcode IDE. It will be using Google API to get user's location, OpenWeatherMap API to get weather forecast and BBC News API to get latest news.
 
-### 2.2 Интерфейс пользователя
+### 2.2 User Interfaces
 
-Данный проект является продолжением уже существующей версии. Ниже представлен интерфейс на данный момент:
+This project is continuation of the previous one, which main goal was to show user information about his location and weather forecast. So, below you may see the previous project's user interface:
 
-![Alt text](AppScreenShots/MainScreen.png "Главный экран")
-![Alt text](AppScreenShots/HistoryScreen.png "История погоды")
-![Alt text](AppScreenShots/OpenedHistory.png "Просмотр истории")
+![Alt text](AppScreenShots/MainScreen.png "Main screen")
+![Alt text](AppScreenShots/HistoryScreen.png "History of user requests")
+![Alt text](AppScreenShots/OpenedHistory.png "Opened history cell")
 
-Ниже представлены дополнительные экраны приложения:
+Here you can see mockups of new screens:
 
-![Alt text](AppScreenShots/WeatherSearch.png "Поиск погоды")
-![Alt text](AppScreenShots/News.png "Новости")
+![Alt text](AppScreenShots/WeatherSearch.png "Weather search")
+![Alt text](AppScreenShots/News.png "News page")
 
-### 2.3 Характеристика пользователей
+This is not the final design. I just tried to create user interface from stock iOS UI-elements.
 
-Целевая аудитория приложения - любые пользователи, интересующиеся погодой и новостями.
-Минимальный необходимый навык - умение использовать устройство под управлением iOS.
+### 2.3 User Characteristics
 
-### 2.4 Предположения и зависимости
+The target audience is everyone, who has necessity in latest news and weather forecast and wants to see it in one place.
+Users just need to know, how to use their iOS-devices.
 
-Для использования приложения необходимо соединение с интернетом. В случае его отсутствия будет доступна только история запросов пользователя.
+### 2.4 Assumptions and Dependencies
 
-# 3 Системные требования
+To use application user needs Internet connection. Without Internet connection there will be available only history of user requests.
 
-Любое устройство под управлением iOS 9.3.x и выше.
+# 3 System Requirements
 
-### 3.1 Функциональные требования
+User has to have any iOS device running iOS 9.3.x and higher.
 
-1. Вывод геокоординат (широта, долгота) и адреса (улица, город, страна) места, где находится пользователь;
-2. Вывод текущей погоды в соответствии с городом и страной;
-3. Сохранение данных из первых двух пунктов и возможность их просмотра;
+### 3.1 Functional Requirements
+
+Application must:
+
+1. Show geographic coordinates (latitude, longitude) and address (street, city, country) of the user's current location;
+2. Show current weather forecast for the city (uses city, gotten in the article above);
+3. Save info from 2 articles above and show it;
 4. Вывод новостей города и (или) страны в количестве до 10 штук;
 5. Возможность поиска погоды других городов (полнота списка городов зависит от OpenWeatherMap API, который предоставляет данные о погоде);
 6. Возможность просмотра прогноза погоды (на пять дней вперёд).
