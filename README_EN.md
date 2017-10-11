@@ -44,12 +44,12 @@ Application must:
 1. Show geographic coordinates (latitude, longitude) and address (street, city, country) of the user's current location;
 2. Show current weather forecast for the city (uses city, gotten in the article above);
 3. Save info from 2 articles above and show it;
-4. Вывод новостей города и (или) страны в количестве до 10 штук;
-5. Возможность поиска погоды других городов (полнота списка городов зависит от OpenWeatherMap API, который предоставляет данные о погоде);
-6. Возможность просмотра прогноза погоды (на пять дней вперёд).
+4. Show latest news of the city/country (from 1 to 10 news);
+5. Give ability to search for weather forecast of other cities;
+6. Show weather forecast for 5 days.
 
-### 3.2 Нефункциональные требования
-#### 3.2.1 Атрибуты качества
+### 3.2 Non-Functional Requirements 
+#### 3.2.1 SOFTWARE QUALITY ATTRIBUTES
 
-1. Последние новости: 
-приложение должно предоставлять доступ только к актуальным новостям. Каждая новость будет проходить проверку на дату публикации. В том случае, если дата публикации новости будет отличаться от текущей даты, то новость не будет доступна для просмотра пользователем;
+1. Latest news: 
+application must show only latest news. Every news will checked: if it's publication date will differ from current date, this news will not be shown in news screen.
