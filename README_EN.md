@@ -43,7 +43,7 @@ Application must:
 
 1. Show geographic coordinates (latitude, longitude) and address (street, city, country) of the user's current location;
 2. Show current weather forecast for the city (uses city, gotten in the article above);
-3. Save info from 2 articles above and show it;
+3. Save info from 2 articles above and give ability to watch it;
 4. Show latest news of the city/country (from 1 to 10 news);
 5. Give ability to search for weather forecast of other cities;
 6. Show weather forecast for 5 days.
