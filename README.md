@@ -23,10 +23,11 @@
 
 Ниже представлен обновлённый дизайн приложения:
 
-<img src="https://github.com/favicon.ico" width="48">
-![Alt text](AppScreenShots/ToDevelop/WeatherSearch.png "Погода")
-![Alt text](AppScreenShots/ToDevelop/News.png "Новости")
-![Alt text](AppScreenShots/ToDevelop/History.png "История")
+<img src="https://github.com/Ivan778/Awenew/blob/master/AppScreenShots/ToDevelop/Main.png" alt="Главная" width="400">
+<img src="https://github.com/Ivan778/Awenew/blob/master/AppScreenShots/ToDevelop/WeatherSearch.png" alt="Погода" width="400">
+<img src="https://github.com/Ivan778/Awenew/blob/master/AppScreenShots/ToDevelop/News.png" alt="Новости" width="400">
+<img src="https://github.com/Ivan778/Awenew/blob/master/AppScreenShots/ToDevelop/History.png" alt="История" width="400">
+
 
 ### 2.3 Характеристика пользователей
 
