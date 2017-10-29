@@ -23,7 +23,7 @@
 
 Ниже представлен обновлённый дизайн приложения:
 
-![Alt text](AppScreenShots/ToDevelop/Main.png | width = 100 "Главная")
+<img src="https://github.com/favicon.ico" width="48">
 ![Alt text](AppScreenShots/ToDevelop/WeatherSearch.png "Погода")
 ![Alt text](AppScreenShots/ToDevelop/News.png "Новости")
 ![Alt text](AppScreenShots/ToDevelop/History.png "История")
