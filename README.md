@@ -23,10 +23,10 @@
 
 Ниже представлен обновлённый дизайн приложения:
 
-![Alt text](Awenew/AppScreenShots/ToDevelop/Main.png "Главная")
-![Alt text](Awenew/AppScreenShots/ToDevelop/WeatherSearch.png "Погода")
-![Alt text](Awenew/AppScreenShots/ToDevelop/News.png "Новости")
-![Alt text](Awenew/AppScreenShots/ToDevelop/History.png "История")
+![Alt text](AppScreenShots/ToDevelop/Main.png "Главная")
+![Alt text](AppScreenShots/ToDevelop/WeatherSearch.png "Погода")
+![Alt text](AppScreenShots/ToDevelop/News.png "Новости")
+![Alt text](AppScreenShots/ToDevelop/History.png "История")
 
 ### 2.3 Характеристика пользователей
 
