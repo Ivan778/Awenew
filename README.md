@@ -21,7 +21,7 @@
 ![Alt text](AppScreenShots/HistoryScreen.png "История погоды")
 ![Alt text](AppScreenShots/OpenedHistory.png "Просмотр истории")
 
-Ниже представлен обновлённый дизайн приложения:
+Ниже представлен дизайн разрабатываемого приложения:
 
 <img src="https://github.com/Ivan778/Awenew/blob/master/AppScreenShots/ToDevelop/Main.png" alt="Главная" width="400">
 <img src="https://github.com/Ivan778/Awenew/blob/master/AppScreenShots/ToDevelop/WeatherSearch.png" alt="Погода" width="400">
