@@ -57,9 +57,6 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Блокируем кнопки TabBar, чтобы пользователь не мог перейти, когда осуществляется подгрузка данных о погоде
         lockUnlockBarButtons(value: false)
         
-        //FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousRequests")
-        //FileProcessor.saveChecklistItems(items: [[String: String]](), key: "PreviousWeatherRequests")
-        
         // Для протоколов
         weather = WeatherReceiver(delegate: self)
         reverseGeocoder = GoogleGeocoder(delegate: self)
@@ -157,7 +154,7 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Записываем в Label адреса
         self.adressLabel.text = "-/-"
         
-        group.leave()
+        self.group.leave()
     }
     
     // Сообщает пользователю информацию о том, что приложение не имеет доступа к геолокации
@@ -183,7 +180,7 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Обновили Label с широтой и долготой
         updateLabels()
         
-        
+        lockUnlockBarButtons(value: true)
     }
     
     // Срабатывает при успешном получении координат
@@ -196,12 +193,15 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Отображаем изменения на экране
         updateLabels()
         
-        // Получает погоду по широте и долготе
-        self.weather.getWeather(latitude: String(format: "%.3f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.3f", (self.location?.coordinate.longitude)!))
-        group.enter()
-        // Получает адрес по широте и долготе
-        self.reverseGeocoder.getAdress(latitude: String(format: "%.5f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.5f", (self.location?.coordinate.longitude)!))
-        group.enter()
+        if Reachability.isConnectedToNetwork() {
+            // Получает погоду по широте и долготе
+            self.weather.getWeather(latitude: String(format: "%.3f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.3f", (self.location?.coordinate.longitude)!))
+            group.enter()
+            // Получает адрес по широте и долготе
+            self.reverseGeocoder.getAdress(latitude: String(format: "%.5f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.5f", (self.location?.coordinate.longitude)!))
+            group.enter()
+        }
+        
     }
 
 }
