@@ -36,6 +36,8 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     // Для получения адреса
     var reverseGeocoder: GoogleGeocoder!
     
+    let group = DispatchGroup()
+    
     // Блокирует/разблокирует кнопки TabBar
     func lockUnlockBarButtons(value: Bool) {
         let tabBarControllerItems = self.tabBarController?.tabBar.items
@@ -75,11 +77,9 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
             self.view.backgroundColor = UIColor.init(red: 25.0/255.0, green: 25.0/255.0, blue: 112.0/255.0, alpha: 1)
         }
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        group.notify(queue: DispatchQueue.main) {
+            self.lockUnlockBarButtons(value: true)
+        }
         
     }
     
@@ -94,16 +94,20 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     
     // Принимает данные о погоде и выводит их на экран
     func didGetWeather(weather: Weather) {
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .userInitiated).async {
             if self.wroteWeather == false {
-                // Записываем данные о погоде в их Label-ы
-                self.temperatureAndDescriptionLabel.text = "\(weather.temperature) °C"
-                self.humidityLabel.text = "\(weather.humidity) %"
-                self.pressureLabel.text = "\(weather.pressure) мм рт. ст."
-                self.weatherIconImageView.image = UIImage(named: weather.icon)
+                DispatchQueue.main.async {
+                    // Записываем данные о погоде в их Label-ы
+                    self.temperatureAndDescriptionLabel.text = "\(weather.temperature) °C"
+                    self.humidityLabel.text = "\(weather.humidity) %"
+                    self.pressureLabel.text = "\(weather.pressure) мм рт. ст."
+                    self.weatherIconImageView.image = UIImage(named: weather.icon)
+                }
                 
                 // Записываем погоду в файл
                 WriteWeatherToFile.write(weather: weather)
+                
+                self.group.leave()
                 
                 // Говорим, что уже была осуществлена запись погоды в файл
                 self.wroteWeather = true
@@ -121,20 +125,23 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         self.temperatureAndDescriptionLabel.text = "-/-"
         self.humidityLabel.text = "-/-"
         self.pressureLabel.text = "-/-"
+        
+        self.group.leave()
     }
     
     // Принимает адрес и выводит его на экран
     func didGetAdress(adress: [String]) {
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .userInitiated).async {
             if self.wroteLocation == false {
-                // Отображаем адрес на экран
-                self.adressLabel.text = adress[0]
+                DispatchQueue.main.async {
+                    // Отображаем адрес на экран
+                    self.adressLabel.text = adress[0]
+                }
                 
                 // Пишем адрес в файл
                 WriteAdressToFile.write(adress: adress, latitude: (self.location?.coordinate.latitude)!, longitude: (self.location?.coordinate.longitude)!)
                 
-                // Разблокировали кнопки
-                self.lockUnlockBarButtons(value: true)
+                self.group.leave()
                 
                 self.wroteLocation = true
             }
@@ -150,8 +157,7 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Записываем в Label адреса
         self.adressLabel.text = "-/-"
         
-        // Разблокировали кнопки
-        self.lockUnlockBarButtons(value: true)
+        group.leave()
     }
     
     // Сообщает пользователю информацию о том, что приложение не имеет доступа к геолокации
@@ -177,8 +183,7 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Обновили Label с широтой и долготой
         updateLabels()
         
-        // Разблокировали кнопки
-        self.lockUnlockBarButtons(value: true)
+        
     }
     
     // Срабатывает при успешном получении координат
@@ -193,9 +198,10 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         
         // Получает погоду по широте и долготе
         self.weather.getWeather(latitude: String(format: "%.3f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.3f", (self.location?.coordinate.longitude)!))
+        group.enter()
         // Получает адрес по широте и долготе
         self.reverseGeocoder.getAdress(latitude: String(format: "%.5f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.5f", (self.location?.coordinate.longitude)!))
-        
+        group.enter()
     }
 
 }
