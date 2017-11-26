@@ -346,11 +346,12 @@
                         <outlet property="activityIndicator" destination="Pxd-m7-oKr" id="iIx-Uc-BOA"/>
                         <outlet property="searchBar" destination="AUt-yb-5Om" id="wfz-m9-jnG"/>
                         <outlet property="tableView" destination="VUp-xo-ckc" id="tw4-fc-cS1"/>
+                        <segue destination="v6c-AK-izx" kind="presentation" identifier="ShowWeather" id="gYe-DP-K8I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hli-TW-g9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-136.875" y="1125"/>
+            <point key="canvasLocation" x="-139" y="1125"/>
         </scene>
         <!--Главная-->
         <scene sceneID="tUW-wA-SgW">
@@ -395,4 +396,7 @@
         <image name="compass" width="24" height="24"/>
         <image name="list" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gYe-DP-K8I"/>
+    </inferredMetricsTieBreakers>
 </document>

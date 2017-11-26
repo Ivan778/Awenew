@@ -9,26 +9,50 @@
 import UIKit
 import Foundation
  
-class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, PlacesIDsDelegate, GoogleGeocoderDelegate {
+class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, PlacesIDsDelegate, GoogleGeocoderDelegate, WeatherReceiverDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var searchItems = [String: String]()
     
-    var placeCoordinates: PlacesIDs!
-    var geocoder: GoogleGeocoder!
+    var placesReceiver: PlacesIDs!
+    var coordinatesReceiver: GoogleGeocoder!
+    var weatherReceiver: WeatherReceiver!
+    
+    var selectedItemNumber = Int()
+    var weatherToShow: Weather!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         searchBar.delegate = self
         
-        placeCoordinates = PlacesIDs(delegate: self)
-        geocoder = GoogleGeocoder(delegate: self)
+        placesReceiver = PlacesIDs(delegate: self)
+        coordinatesReceiver = GoogleGeocoder(delegate: self)
+        weatherReceiver = WeatherReceiver(delegate: self)
+    }
+    
+    // Если сейчас осуществится переход по какому-либо segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowWeather" {
+            // Получили доступ к MoreInfoViewController
+            let controller = segue.destination as! MoreInfoViewController
+            // Записали в переменную MoreInfoViewController-а numberOfItemToShow значение ячейки, которое нужно показать
+            controller.numberOfItemToShow = -21
+            controller.weatherInfo = weatherToShow
+            controller.address = Array(searchItems.keys)[selectedItemNumber]
+        }
+    }
+    
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - SearchBarDelegate
@@ -36,14 +60,17 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
         searchBar.resignFirstResponder()
         
         if Reachability.isConnectedToNetwork() {
-            placeCoordinates.getListOfItems(searchPhrase: searchBar.text!)
+            placesReceiver.getListOfItems(searchPhrase: searchBar.text!)
             activityIndicator.isHidden = false
         } else {
-            let alert = UIAlertController(title: "Ошибка соединения", message: "Проверьте Ваше соединение с интернетом.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(okAction)
-            
-            self.present(alert, animated: true, completion: nil)
+            self.presentAlert(title: "Ошибка!", message: "Проверьте Ваше соединение с интернетом.")
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            searchItems.removeAll()
+            tableView.reloadData()
         }
     }
     
@@ -65,6 +92,18 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+        
+        if Reachability.isConnectedToNetwork() {
+            activityIndicator.isHidden = false
+            selectedItemNumber = indexPath.row
+            coordinatesReceiver.getCoordinatesByID(ID: Array(searchItems.values)[indexPath.row])
+        } else {
+            self.presentAlert(title: "Ошибка!", message: "Проверьте Ваше соединение с интернетом.")
+        }
+    }
+    
     // MARK: - PlaceGeocoordinates delegate methods
     func didGetList(items: [String : String]) {
         searchItems = items
@@ -73,20 +112,40 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
             self.tableView.reloadData()
             self.activityIndicator.isHidden = true
         }
-        
-        print("Hello")
     }
     
     func didNotGetList(error: NSError) {
-        activityIndicator.isHidden = true
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = true
+            self.presentAlert(title: "Ошибка!", message: "Данные не были получены.")
+        }
     }
     
     // MARK: - GoogleGeocoder delegate methods
     func didGetCoordinates(coordinates: [String]) {
-        print(coordinates)
+        weatherReceiver.getWeather(latitude: coordinates[0], longitude: coordinates[1])
     }
     
     func didNotGetCoordinates(error: NSError) {
-        
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = true
+            self.presentAlert(title: "Ошибка!", message: "Данные не были получены.")
+        }
+    }
+    
+    // MARK: - WeatherReceiver delegate methods
+    func didGetWeather(weather: Weather) {
+        weatherToShow = weather
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = true
+            self.performSegue(withIdentifier: "ShowWeather", sender: self)
+        }
+    }
+    
+    func didNotGetWeather(error: NSError) {
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = true
+            self.presentAlert(title: "Ошибка!", message: "Данные не были получены.")
+        }
     }
 }
