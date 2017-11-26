@@ -28,6 +28,8 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     // Будет хранить координаты
     var location: CLLocation?
     
+    var gotLocation = false
+    
     var wroteWeather = false
     var wroteLocation = false
     
@@ -198,8 +200,10 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
             self.weather.getWeather(latitude: String(format: "%.3f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.3f", (self.location?.coordinate.longitude)!))
             group.enter()
             // Получает адрес по широте и долготе
-            self.reverseGeocoder.getAdress(latitude: String(format: "%.5f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.5f", (self.location?.coordinate.longitude)!))
+            self.reverseGeocoder.getAddress(latitude: String(format: "%.5f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.5f", (self.location?.coordinate.longitude)!))
             group.enter()
+            
+            gotLocation = true
         }
         
     }

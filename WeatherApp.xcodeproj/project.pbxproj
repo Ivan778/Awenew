@@ -20,8 +20,10 @@
 		2C5B135C1EB73878003CE904 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B135B1EB73878003CE904 /* Reachability.swift */; };
 		2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B135D1EB73F22003CE904 /* FileProcessor.swift */; };
 		2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */; };
+		2CA39EA21FCB0CEE006B7FD0 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA39EA11FCB0CEE006B7FD0 /* Translator.swift */; };
 		2CACE4261EBA0A8100AC3A1E /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */; };
 		2CB5BE891FCACEEE00CAF68B /* WeatherSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */; };
+		2CB5BE8B1FCADA5800CAF68B /* PlacesIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB5BE8A1FCADA5800CAF68B /* PlacesIDs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +42,10 @@
 		2C5B135B1EB73878003CE904 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2C5B135D1EB73F22003CE904 /* FileProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
 		2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleGeocoder.swift; sourceTree = "<group>"; };
+		2CA39EA11FCB0CEE006B7FD0 /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewController.swift; sourceTree = "<group>"; };
+		2CB5BE8A1FCADA5800CAF68B /* PlacesIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesIDs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				2C5B135F1EB73FC5003CE904 /* UsefulLibraries */,
-				2CA039A01EB72C0A00CD6222 /* WorkingWithReverseGeocoding */,
+				2CA039A01EB72C0A00CD6222 /* WorkingWithPlaces */,
 				2C29A2D71EB65CFB00F7DD74 /* WorkingWithWeather */,
 				2C4814A01EB39BC10076DE8C /* ViewControllers */,
 				2C4814891EB38EDC0076DE8C /* AppDelegate.swift */,
@@ -92,6 +96,7 @@
 				2C4814921EB38EDC0076DE8C /* Assets.xcassets */,
 				2C4814941EB38EDC0076DE8C /* LaunchScreen.storyboard */,
 				2C4814971EB38EDC0076DE8C /* Info.plist */,
+				2CA39EA11FCB0CEE006B7FD0 /* Translator.swift */,
 			);
 			name = WeatherApp;
 			path = NibleSoft;
@@ -119,12 +124,13 @@
 			name = UsefulLibraries;
 			sourceTree = "<group>";
 		};
-		2CA039A01EB72C0A00CD6222 /* WorkingWithReverseGeocoding */ = {
+		2CA039A01EB72C0A00CD6222 /* WorkingWithPlaces */ = {
 			isa = PBXGroup;
 			children = (
 				2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */,
+				2CB5BE8A1FCADA5800CAF68B /* PlacesIDs.swift */,
 			);
-			name = WorkingWithReverseGeocoding;
+			name = WorkingWithPlaces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +218,8 @@
 				2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */,
 				2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */,
 				2CB5BE891FCACEEE00CAF68B /* WeatherSearchViewController.swift in Sources */,
+				2CB5BE8B1FCADA5800CAF68B /* PlacesIDs.swift in Sources */,
+				2CA39EA21FCB0CEE006B7FD0 /* Translator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
