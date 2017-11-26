@@ -65,10 +65,6 @@ class GoogleGeocoder {
                         }
                     }
                     
-                    // Выводим полный адрес и город в консоль
-                    //print(adress)
-                    //print("Город: \(city)")
-                    
                     // Отправляем данные в WeatherAndNavigationViewController
                     self.delegate.didGetAdress(adress: [adress, city])
                     

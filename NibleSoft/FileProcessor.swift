@@ -15,7 +15,7 @@ public class FileProcessor {
         return paths[0]
     }
     
-    //Путь к файлу Checklist.plist, в котором мы будем хранить наши дела
+    //Путь к файлу
     class func dataFilePath(name: String) -> URL {
         return documentsDirectory().appendingPathComponent("\(name).plist")
     }

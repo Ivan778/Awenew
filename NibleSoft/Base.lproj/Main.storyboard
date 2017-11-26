@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="-401.40845070422534"/>
+            <point key="canvasLocation" x="913" y="-401"/>
         </scene>
         <!--История запросов-->
         <scene sceneID="wg7-f3-ORb">
@@ -152,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="356"/>
+            <point key="canvasLocation" x="911" y="356"/>
         </scene>
         <!--Подробнее-->
         <scene sceneID="EoM-gS-Ux9">
@@ -238,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uei-qN-KPk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293" y="356"/>
+            <point key="canvasLocation" x="1941" y="356"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -253,17 +253,18 @@
                     <connections>
                         <segue destination="H4R-cU-dL7" kind="relationship" relationship="viewControllers" id="Uj9-jL-Sdf"/>
                         <segue destination="sfR-Zr-Nxl" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="kCf-di-MSU" kind="relationship" relationship="viewControllers" id="KIU-H4-4fL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512" y="0.0"/>
+            <point key="canvasLocation" x="-1134" y="-12"/>
         </scene>
-        <!--История запросов-->
+        <!--История-->
         <scene sceneID="LFw-PV-hHi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sfR-Zr-Nxl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="История запросов" image="list" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="История" image="list" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R8U-BW-F17">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -276,13 +277,85 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMj-n1-XAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="356"/>
+            <point key="canvasLocation" x="-137" y="356"/>
         </scene>
-        <!--Навигация-->
+        <!--Погода-->
+        <scene sceneID="Bml-pq-NbC">
+            <objects>
+                <viewController id="NLF-kf-Pie" customClass="WeatherSearchViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LHn-pX-Wzr"/>
+                        <viewControllerLayoutGuide type="bottom" id="UTR-Z4-aw5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6dT-RB-wKb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Поиск" translatesAutoresizingMaskIntoConstraints="NO" id="AUt-yb-5Om">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VUp-xo-ckc">
+                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchItem" id="UcS-hC-NCg">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UcS-hC-NCg" id="8UO-cu-EYN">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="521" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="La7-pB-lqy">
+                                                    <rect key="frame" x="8" y="11" width="279" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="La7-pB-lqy" secondAttribute="bottom" constant="11" id="4il-K8-TYh"/>
+                                                <constraint firstItem="La7-pB-lqy" firstAttribute="top" secondItem="8UO-cu-EYN" secondAttribute="top" constant="11" id="C9r-MC-hYH"/>
+                                                <constraint firstAttribute="trailing" secondItem="La7-pB-lqy" secondAttribute="trailing" id="Htf-Pi-c2C"/>
+                                                <constraint firstItem="La7-pB-lqy" firstAttribute="leading" secondItem="8UO-cu-EYN" secondAttribute="leading" constant="8" id="fAl-xX-eIe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Pxd-m7-oKr">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AUt-yb-5Om" secondAttribute="trailing" id="1gG-si-9v7"/>
+                            <constraint firstItem="Pxd-m7-oKr" firstAttribute="centerX" secondItem="6dT-RB-wKb" secondAttribute="centerX" id="BE2-kG-HAT"/>
+                            <constraint firstAttribute="trailing" secondItem="VUp-xo-ckc" secondAttribute="trailing" id="CYg-sn-EfR"/>
+                            <constraint firstItem="VUp-xo-ckc" firstAttribute="leading" secondItem="6dT-RB-wKb" secondAttribute="leading" id="DHT-eB-DBy"/>
+                            <constraint firstItem="UTR-Z4-aw5" firstAttribute="top" secondItem="VUp-xo-ckc" secondAttribute="bottom" id="Dmh-Il-Tae"/>
+                            <constraint firstItem="Pxd-m7-oKr" firstAttribute="centerY" secondItem="6dT-RB-wKb" secondAttribute="centerY" id="IPP-vZ-ocB"/>
+                            <constraint firstItem="VUp-xo-ckc" firstAttribute="top" secondItem="AUt-yb-5Om" secondAttribute="bottom" id="IwB-NP-qjz"/>
+                            <constraint firstItem="AUt-yb-5Om" firstAttribute="leading" secondItem="6dT-RB-wKb" secondAttribute="leading" id="JM3-3Q-L00"/>
+                            <constraint firstItem="VUp-xo-ckc" firstAttribute="top" secondItem="AUt-yb-5Om" secondAttribute="bottom" id="Qne-V6-eP8"/>
+                            <constraint firstItem="AUt-yb-5Om" firstAttribute="top" secondItem="LHn-pX-Wzr" secondAttribute="bottom" id="pun-VO-OIE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Погода" id="Lgj-rW-IH4"/>
+                    <connections>
+                        <outlet property="searchBar" destination="AUt-yb-5Om" id="wfz-m9-jnG"/>
+                        <outlet property="tableView" destination="VUp-xo-ckc" id="tw4-fc-cS1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hli-TW-g9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-136.875" y="1125"/>
+        </scene>
+        <!--Главная-->
         <scene sceneID="tUW-wA-SgW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H4R-cU-dL7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Навигация" image="compass" id="Gj1-aO-Gcd"/>
+                    <tabBarItem key="tabBarItem" title="Главная" image="compass" id="Gj1-aO-Gcd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z1F-Tg-M6Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -295,7 +368,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11u-jo-XwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="307.5" y="-401.40845070422534"/>
+            <point key="canvasLocation" x="-137" y="-401"/>
+        </scene>
+        <!--Погода-->
+        <scene sceneID="KVS-Qp-F2Y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kCf-di-MSU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Погода" id="HqL-mq-eM0"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1J0-BV-uYl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NLF-kf-Pie" kind="relationship" relationship="rootViewController" id="jeN-fY-6He"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h5c-rZ-l1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1134.375" y="1125"/>
         </scene>
     </scenes>
     <resources>

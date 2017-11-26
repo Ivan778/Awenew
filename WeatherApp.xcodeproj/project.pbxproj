@@ -21,6 +21,7 @@
 		2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B135D1EB73F22003CE904 /* FileProcessor.swift */; };
 		2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */; };
 		2CACE4261EBA0A8100AC3A1E /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */; };
+		2CB5BE891FCACEEE00CAF68B /* WeatherSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		2C5B135D1EB73F22003CE904 /* FileProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProcessor.swift; sourceTree = "<group>"; };
 		2CA0399E1EB726D300CD6222 /* GoogleGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleGeocoder.swift; sourceTree = "<group>"; };
 		2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
+		2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				2C48148B1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift */,
 				2C48148D1EB38EDC0076DE8C /* HistoryViewController.swift */,
 				2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */,
+				2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				2CACE4261EBA0A8100AC3A1E /* MoreInfoViewController.swift in Sources */,
 				2C5B135E1EB73F22003CE904 /* FileProcessor.swift in Sources */,
 				2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */,
+				2CB5BE891FCACEEE00CAF68B /* WeatherSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
