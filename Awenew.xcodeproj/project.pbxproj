@@ -32,7 +32,7 @@
 		2C29A2D51EB65CF700F7DD74 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2C32BD0D1EBBB1A1004C282C /* WriteWeatherToFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteWeatherToFile.swift; sourceTree = "<group>"; };
 		2C32BD0F1EBBB272004C282C /* WriteAdressToFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteAdressToFile.swift; sourceTree = "<group>"; };
-		2C4814861EB38EDC0076DE8C /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C4814861EB38EDC0076DE8C /* Awenew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awenew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4814891EB38EDC0076DE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C48148B1EB38EDC0076DE8C /* WeatherAndNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAndNavigationViewController.swift; sourceTree = "<group>"; };
 		2C48148D1EB38EDC0076DE8C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		2C4814871EB38EDC0076DE8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C4814861EB38EDC0076DE8C /* WeatherApp.app */,
+				2C4814861EB38EDC0076DE8C /* Awenew.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,7 +101,7 @@
 				2CA39EA11FCB0CEE006B7FD0 /* Translator.swift */,
 			);
 			name = WeatherApp;
-			path = NibleSoft;
+			path = Awenew;
 			sourceTree = "<group>";
 		};
 		2C4814A01EB39BC10076DE8C /* ViewControllers */ = {
@@ -139,9 +139,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C4814851EB38EDC0076DE8C /* WeatherApp */ = {
+		2C4814851EB38EDC0076DE8C /* Awenew */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "WeatherApp" */;
+			buildConfigurationList = 2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "Awenew" */;
 			buildPhases = (
 				2C4814821EB38EDC0076DE8C /* Sources */,
 				2C4814831EB38EDC0076DE8C /* Frameworks */,
@@ -151,9 +151,9 @@
 			);
 			dependencies = (
 			);
-			name = WeatherApp;
-			productName = NibleSoft;
-			productReference = 2C4814861EB38EDC0076DE8C /* WeatherApp.app */;
+			name = Awenew;
+			productName = Awenew;
+			productReference = 2C4814861EB38EDC0076DE8C /* Awenew.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -173,7 +173,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "WeatherApp" */;
+			buildConfigurationList = 2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "Awenew" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -186,7 +186,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C4814851EB38EDC0076DE8C /* WeatherApp */,
+				2C4814851EB38EDC0076DE8C /* Awenew */,
 			);
 		};
 /* End PBXProject section */
@@ -345,10 +345,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JXCL7H2Z3W;
-				INFOPLIST_FILE = NibleSoft/Info.plist;
+				INFOPLIST_FILE = Awenew/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.Awenew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -359,10 +359,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JXCL7H2Z3W;
-				INFOPLIST_FILE = NibleSoft/Info.plist;
+				INFOPLIST_FILE = Awenew/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.IvanCode.Awenew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -371,7 +371,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "WeatherApp" */ = {
+		2C4814811EB38EDC0076DE8C /* Build configuration list for PBXProject "Awenew" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C4814981EB38EDC0076DE8C /* Debug */,
@@ -380,7 +380,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "WeatherApp" */ = {
+		2C48149A1EB38EDC0076DE8C /* Build configuration list for PBXNativeTarget "Awenew" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C48149B1EB38EDC0076DE8C /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  GoogleGeocoder.swift
-//  NibleSoft
+//  Awenew
 //
 //  Created by Иван on 01.05.17.
 //  Copyright © 2017 IvanCode. All rights reserved.

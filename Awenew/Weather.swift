@@ -1,6 +1,6 @@
 //
 //  Weather.swift
-//  NibleSoft
+//  Awenew
 //
 //  Created by Иван on 30.04.17.
 //  Copyright © 2017 IvanCode. All rights reserved.

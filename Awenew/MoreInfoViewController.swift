@@ -1,6 +1,6 @@
 //
 //  MoreInfoViewController.swift
-//  NibleSoft
+//  Awenew
 //
 //  Created by Иван on 03.05.17.
 //  Copyright © 2017 IvanCode. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Locations.swift
-//  NibleSoft
+//  Awenew
 //
 //  Created by Иван on 28.04.17.
 //  Copyright © 2017 IvanCode. All rights reserved.
