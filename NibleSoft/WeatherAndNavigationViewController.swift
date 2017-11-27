@@ -198,14 +198,13 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         if Reachability.isConnectedToNetwork() {
             // Получает погоду по широте и долготе
             self.weather.getWeather(latitude: String(format: "%.3f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.3f", (self.location?.coordinate.longitude)!))
-            group.enter()
+            self.group.enter()
             // Получает адрес по широте и долготе
             self.reverseGeocoder.getAddress(latitude: String(format: "%.5f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.5f", (self.location?.coordinate.longitude)!))
-            group.enter()
+            self.group.enter()
             
-            gotLocation = true
+            self.gotLocation = true
         }
-        
     }
 
 }

@@ -53,11 +53,13 @@ class GoogleGeocoder {
             }
         }
         
-        if Reachability.isConnectedToNetwork() == true {
+        
+        if Reachability.isConnectedToNetwork() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetCoordinates!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
         }
+ 
     }
     
     func getAddress(latitude: String, longitude: String) {
@@ -113,12 +115,12 @@ class GoogleGeocoder {
             }
         }
         
-        // Если соединение с интернетом есть, то запускаем сессию, которая отправит запрос на погоду
-        if Reachability.isConnectedToNetwork() == true {
+        if Reachability.isConnectedToNetwork() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetAdress!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
         }
+        
     }
     
     func parseIDResponse(response: NSArray) -> [String] {

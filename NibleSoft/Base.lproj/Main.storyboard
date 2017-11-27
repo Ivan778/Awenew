@@ -254,6 +254,7 @@
                         <segue destination="H4R-cU-dL7" kind="relationship" relationship="viewControllers" id="Uj9-jL-Sdf"/>
                         <segue destination="sfR-Zr-Nxl" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="kCf-di-MSU" kind="relationship" relationship="viewControllers" id="KIU-H4-4fL"/>
+                        <segue destination="klI-ej-bCV" kind="relationship" relationship="viewControllers" id="dRp-eB-UII"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -294,6 +295,10 @@
                             <searchBar contentMode="redraw" placeholder="Поиск" translatesAutoresizingMaskIntoConstraints="NO" id="AUt-yb-5Om">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VUp-xo-ckc">
                                 <rect key="frame" x="0.0" y="108" width="320" height="411"/>
@@ -353,6 +358,35 @@
             </objects>
             <point key="canvasLocation" x="-139" y="1125"/>
         </scene>
+        <!--Новости-->
+        <scene sceneID="VnE-uJ-2TQ">
+            <objects>
+                <tableViewController id="icH-Uz-4d6" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="obg-dy-7pR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oKY-jJ-fH5">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oKY-jJ-fH5" id="bBQ-cc-3Zn">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="icH-Uz-4d6" id="jxz-hf-V7R"/>
+                            <outlet property="delegate" destination="icH-Uz-4d6" id="fh3-JK-3Rr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Новости" id="Etb-Ma-J6S"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ilH-8V-kPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855" y="-1216.9014084507041"/>
+        </scene>
         <!--Главная-->
         <scene sceneID="tUW-wA-SgW">
             <objects>
@@ -376,7 +410,7 @@
         <scene sceneID="KVS-Qp-F2Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kCf-di-MSU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Погода" id="HqL-mq-eM0"/>
+                    <tabBarItem key="tabBarItem" title="Погода" image="first" id="HqL-mq-eM0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1J0-BV-uYl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -391,10 +425,31 @@
             </objects>
             <point key="canvasLocation" x="-1134.375" y="1125"/>
         </scene>
+        <!--Новости-->
+        <scene sceneID="7hf-Tm-mK5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="klI-ej-bCV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" image="second" id="rom-Xl-gvO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8uE-VD-b2k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="icH-Uz-4d6" kind="relationship" relationship="rootViewController" id="YMK-K4-VSi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l9u-a4-Bev" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-142.5" y="-1216.9014084507041"/>
+        </scene>
     </scenes>
     <resources>
         <image name="compass" width="24" height="24"/>
+        <image name="first" width="30" height="30"/>
         <image name="list" width="24" height="24"/>
+        <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gYe-DP-K8I"/>

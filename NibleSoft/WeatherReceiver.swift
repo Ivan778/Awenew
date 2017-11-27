@@ -73,8 +73,8 @@ class WeatherReceiver {
                 }
             }
         }
-        // Если соединение с интернетом есть, то запускаем сессию, которая отправит запрос на погоду
-        if Reachability.isConnectedToNetwork() == true {
+        
+        if Reachability.isConnectedToNetwork() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetWeather(error: NSError(domain: "Нет соединения с интернетом!", code: 404))

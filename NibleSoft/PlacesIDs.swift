@@ -49,11 +49,12 @@ class PlacesIDs {
             }
         }
         
-        if Reachability.isConnectedToNetwork() == true {
+        if Reachability.isConnectedToNetwork() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetList(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
         }
+        
     }
     
     func parseResponse(response: NSArray) -> [String: String] {

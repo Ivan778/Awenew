@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
- 
+
 class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, PlacesIDsDelegate, GoogleGeocoderDelegate, WeatherReceiverDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -26,6 +26,8 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setDoneOnKeyboard()
+        
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
@@ -35,12 +37,25 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
         weatherReceiver = WeatherReceiver(delegate: self)
     }
     
+    func setDoneOnKeyboard() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        self.searchBar.inputAccessoryView = keyboardToolbar
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     // Если сейчас осуществится переход по какому-либо segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowWeather" {
-            // Получили доступ к MoreInfoViewController
+            
             let controller = segue.destination as! MoreInfoViewController
-            // Записали в переменную MoreInfoViewController-а numberOfItemToShow значение ячейки, которое нужно показать
+            
             controller.numberOfItemToShow = -21
             controller.weatherInfo = weatherToShow
             controller.address = Array(searchItems.keys)[selectedItemNumber]
@@ -60,8 +75,8 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
         searchBar.resignFirstResponder()
         
         if Reachability.isConnectedToNetwork() {
-            placesReceiver.getListOfItems(searchPhrase: searchBar.text!)
-            activityIndicator.isHidden = false
+            self.placesReceiver.getListOfItems(searchPhrase: searchBar.text!)
+            self.activityIndicator.isHidden = false
         } else {
             self.presentAlert(title: "Ошибка!", message: "Проверьте Ваше соединение с интернетом.")
         }
@@ -96,9 +111,9 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
         
         if Reachability.isConnectedToNetwork() {
-            activityIndicator.isHidden = false
-            selectedItemNumber = indexPath.row
-            coordinatesReceiver.getCoordinatesByID(ID: Array(searchItems.values)[indexPath.row])
+            self.activityIndicator.isHidden = false
+            self.selectedItemNumber = indexPath.row
+            self.coordinatesReceiver.getCoordinatesByID(ID: Array(self.searchItems.values)[indexPath.row])
         } else {
             self.presentAlert(title: "Ошибка!", message: "Проверьте Ваше соединение с интернетом.")
         }

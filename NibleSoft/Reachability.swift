@@ -1,15 +1,5 @@
-//
-//  Reachability.swift
-//  NibleSoft
-//
-//  Created by Иван on 01.05.17.
-//  Copyright © 2017 IvanCode. All rights reserved.
-//
-
-import Foundation
 import SystemConfiguration
 
-//Этот класс проверяет доступ к интернету
 public class Reachability {
     
     class func isConnectedToNetwork() -> Bool {
@@ -29,10 +19,19 @@ public class Reachability {
             return false
         }
         
-        let isReachable = flags == .reachable
-        let needsConnection = flags == .connectionRequired
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
         
-        return isReachable && !needsConnection
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
         
     }
 }
