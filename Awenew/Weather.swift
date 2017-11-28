@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Структура для хранения единицы описания погоды
+// Структура для хранения погодной записи
 @objc class Weather: NSObject {
     let temperature: Int
     let pressure: Int

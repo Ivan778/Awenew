@@ -69,13 +69,6 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        // Считываем значение часа
-        let currentHours = NSCalendar.current.component(.hour, from: Date())
-        // Если сейчас тёмное время суток, то делаем фон тёмно-синим
-        if (currentHours > 20 || currentHours < 5) {
-            self.view.backgroundColor = UIColor.init(red: 25.0/255.0, green: 25.0/255.0, blue: 112.0/255.0, alpha: 1)
-        }
-        
         group.notify(queue: DispatchQueue.main) {
             self.lockUnlockBarButtons(value: true)
         }

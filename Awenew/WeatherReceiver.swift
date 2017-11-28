@@ -131,7 +131,7 @@ class WeatherReceiver {
             
             if let main = (item as AnyObject)["main"] as? AnyObject {
                 temp = (main["temp"] as? Int)!
-                press = (main["pressure"] as? Int)!
+                press = Int((main["pressure"] as? Double)! * 100 / 133.3) 
                 humid = (main["humidity"] as? Int)!
             }
             if let weather = (item as AnyObject)["weather"] as? AnyObject {

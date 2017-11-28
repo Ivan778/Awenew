@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 import SystemConfiguration
 
 public class Reachability {

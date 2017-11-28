@@ -41,6 +41,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         activityIndicator.isHidden = false
     }
     
+    // MARK: - Alert call method
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -82,7 +83,6 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - WeatherReceiver delegate methods
     func didGetForecast(forecast: [Weather]) {
-        //print(forecast)
         forecastList = forecast
         DispatchQueue.main.async {
             self.tableView.reloadData()
