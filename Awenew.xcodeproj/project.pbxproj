@@ -25,6 +25,7 @@
 		2CACE4261EBA0A8100AC3A1E /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */; };
 		2CB5BE891FCACEEE00CAF68B /* WeatherSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */; };
 		2CB5BE8B1FCADA5800CAF68B /* PlacesIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB5BE8A1FCADA5800CAF68B /* PlacesIDs.swift */; };
+		2CD7E1481FCCA23B0043CFAE /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD7E1471FCCA23B0043CFAE /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSearchViewController.swift; sourceTree = "<group>"; };
 		2CB5BE8A1FCADA5800CAF68B /* PlacesIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesIDs.swift; sourceTree = "<group>"; };
+		2CD7E1471FCCA23B0043CFAE /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +75,7 @@
 		2C48147D1EB38EDC0076DE8C = {
 			isa = PBXGroup;
 			children = (
-				2C4814881EB38EDC0076DE8C /* WeatherApp */,
+				2C4814881EB38EDC0076DE8C /* Awenew */,
 				2C4814871EB38EDC0076DE8C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +88,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C4814881EB38EDC0076DE8C /* WeatherApp */ = {
+		2C4814881EB38EDC0076DE8C /* Awenew */ = {
 			isa = PBXGroup;
 			children = (
 				2C5B135F1EB73FC5003CE904 /* UsefulLibraries */,
@@ -100,7 +102,6 @@
 				2C4814971EB38EDC0076DE8C /* Info.plist */,
 				2CA39EA11FCB0CEE006B7FD0 /* Translator.swift */,
 			);
-			name = WeatherApp;
 			path = Awenew;
 			sourceTree = "<group>";
 		};
@@ -112,6 +113,7 @@
 				2CACE4251EBA0A8100AC3A1E /* MoreInfoViewController.swift */,
 				2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */,
 				2CA39EA31FCB65EF006B7FD0 /* NewsLoaderViewController.swift */,
+				2CD7E1471FCCA23B0043CFAE /* WeatherViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 				2C32BD0E1EBBB1A1004C282C /* WriteWeatherToFile.swift in Sources */,
 				2C48148E1EB38EDC0076DE8C /* HistoryViewController.swift in Sources */,
 				2CA39EA41FCB65EF006B7FD0 /* NewsLoaderViewController.swift in Sources */,
+				2CD7E1481FCCA23B0043CFAE /* WeatherViewController.swift in Sources */,
 				2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */,
 				2CA0399F1EB726D300CD6222 /* GoogleGeocoder.swift in Sources */,
 				2C48148A1EB38EDC0076DE8C /* AppDelegate.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  GetPlaceCoordinates.swift
-//  WeatherApp
+//  Awenew
 //
 //  Created by Иван on 26.11.17.
 //  Copyright © 2017 IvanCode. All rights reserved.

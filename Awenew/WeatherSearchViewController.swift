@@ -1,6 +1,6 @@
 //
 //  WeatherSearchViewController.swift
-//  WeatherApp
+//  Awenew
 //
 //  Created by Иван on 26.11.17.
 //  Copyright © 2017 IvanCode. All rights reserved.
@@ -21,6 +21,7 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
     var weatherReceiver: WeatherReceiver!
     
     var selectedItemNumber = Int()
+    var coordinates = [String]()
     var weatherToShow: Weather!
     
     override func viewDidLoad() {
@@ -54,11 +55,11 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowWeather" {
             
-            let controller = segue.destination as! MoreInfoViewController
+            let controller = segue.destination as! WeatherViewController
             
-            controller.numberOfItemToShow = -21
-            controller.weatherInfo = weatherToShow
+            controller.weather = weatherToShow
             controller.address = Array(searchItems.keys)[selectedItemNumber]
+            controller.coordinates = coordinates
         }
     }
     
@@ -138,6 +139,7 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - GoogleGeocoder delegate methods
     func didGetCoordinates(coordinates: [String]) {
+        self.coordinates = coordinates
         weatherReceiver.getWeather(latitude: coordinates[0], longitude: coordinates[1])
     }
     

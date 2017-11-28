@@ -8,13 +8,18 @@
 
 import Foundation
 
-protocol WeatherReceiverDelegate {
-    func didGetWeather(weather: Weather)
-    func didNotGetWeather(error: NSError)
+@objc protocol WeatherReceiverDelegate {
+    @objc optional func didGetWeather(weather: Weather)
+    @objc optional func didNotGetWeather(error: NSError)
+    
+    @objc optional func didGetForecast(forecast: [Weather])
+    @objc optional func didNotGetForecast(error: NSError)
 }
 
 class WeatherReceiver {
-    private let openWeatherBaseURL = "http://api.openweathermap.org/data/2.5/weather?"
+    private let openWeatherBaseURL = "http://api.openweathermap.org/data/2.5/"
+    private let field1 = "weather?"
+    private let field2 = "forecast?"
     private let openWeatherAPIKey = "e04251aa322f414ec1779b3b8c3f9286"
     private var delegate: WeatherReceiverDelegate
     
@@ -26,13 +31,13 @@ class WeatherReceiver {
         let session = URLSession.shared
         
         // Ссылка на запрос погоды по широте и долготе
-        let url = String("\(openWeatherBaseURL)lat=\(String(latitude)!)&lon=\(String(longitude)!)&APPID=\(openWeatherAPIKey)")!
+        let url = String("\(openWeatherBaseURL)\(field1)lat=\(String(latitude)!)&lon=\(String(longitude)!)&APPID=\(openWeatherAPIKey)")!
         let weatherURLSession = URL(string: url)!
         
         // Запрашиваем JSON с данными о погоде
         let dataTask = session.dataTask(with: weatherURLSession) { (data, response, error) in
             if let networkError = error {
-                self.delegate.didNotGetWeather(error: networkError as NSError)
+                self.delegate.didNotGetWeather!(error: networkError as NSError)
                 print("Ошибка! WeatherReceiver - \(networkError)")
             }
             else {
@@ -62,13 +67,10 @@ class WeatherReceiver {
                     // Создаём структуру с описанием погоды, которую отправим в WeatherAndNavigationViewController
                     let forWeatherDelegate = Weather(temperature: temperature, pressure: pressure, humidity: humidity, description: description, icon: icon)
                     // Отправляем данные в WeatherAndNavigationViewController
-                    self.delegate.didGetWeather(weather: forWeatherDelegate)
-                    
-                    // Выводим всё в консоль
-                    //print("\(temperature) °C, \(description)\nВлажность: \(humidity) %\nДавление: \(pressure) мм рт. ст.")
+                    self.delegate.didGetWeather!(weather: forWeatherDelegate)
                 }
                 catch let jsonError as NSError {
-                    self.delegate.didNotGetWeather(error: jsonError)
+                    self.delegate.didNotGetWeather!(error: jsonError)
                     print("Ошибка JSON: \(jsonError)")
                 }
             }
@@ -77,9 +79,82 @@ class WeatherReceiver {
         if Reachability.isConnectedToNetwork() {
             dataTask.resume()
         } else {
-            self.delegate.didNotGetWeather(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
+            self.delegate.didNotGetWeather!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
+        }
+    }
+    
+    func getForecast(coordinates: [String]) {
+        let session = URLSession.shared
+        
+        // Ссылка на запрос погоды по широте и долготе
+        let url = String("\(openWeatherBaseURL)\(field2)units=metric&lat=\(String(coordinates[0])!)&lon=\(String(coordinates[1])!)&APPID=\(openWeatherAPIKey)")!
+        let weatherURLSession = URL(string: url)!
+        
+        // Запрашиваем JSON с данными о погоде
+        let dataTask = session.dataTask(with: weatherURLSession) { (data, response, error) in
+            if let networkError = error {
+                self.delegate.didNotGetForecast!(error: networkError as NSError)
+                print("Ошибка! WeatherReceiver - \(networkError)")
+            }
+            else {
+                do {
+                    // Получили данные о погоде
+                    let forecast = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject]
+                    let list = forecast["list"] as? NSArray
+                    
+                    let forecastList = self.extractForecastList(list: list!)
+                    
+                    self.delegate.didGetForecast!(forecast: forecastList)
+                }
+                catch let jsonError as NSError {
+                    self.delegate.didNotGetWeather!(error: jsonError)
+                    print("Ошибка JSON: \(jsonError)")
+                }
+            }
         }
         
+        if Reachability.isConnectedToNetwork() {
+            dataTask.resume()
+        } else {
+            self.delegate.didNotGetForecast!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
+        }
+    }
+    
+    func extractForecastList(list: NSArray) -> [Weather] {
+        var forecastList = [Weather]()
+        
+        for item in list {
+            var temp = 0
+            var press = 0
+            var humid = 0
+            var icon = ""
+            
+            if let main = (item as AnyObject)["main"] as? AnyObject {
+                temp = (main["temp"] as? Int)!
+                press = (main["pressure"] as? Int)!
+                humid = (main["humidity"] as? Int)!
+            }
+            if let weather = (item as AnyObject)["weather"] as? AnyObject {
+                icon = ((weather[0] as AnyObject)["icon"] as? String)!
+            }
+            
+            let date = self.dateConverter(date: ((item as AnyObject)["dt_txt"] as? String)!)
+            
+            let weather = Weather(temperature: temp, pressure: press, humidity: humid, description: date, icon: icon)
+            forecastList.append(weather)
+        }
+        
+        return forecastList
+    }
+    
+    func dateConverter(date: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let myDate = dateFormatter.date(from: date)!
+        
+        dateFormatter.dateFormat = "dd MMMM, HH:mm"
+        return dateFormatter.string(from: myDate)
     }
     
     // Переводит описание погоды. Нужно дополнить базу

@@ -9,11 +9,11 @@
 import Foundation
 
 // Структура для хранения единицы описания погоды
-struct Weather {
+@objc class Weather: NSObject {
     let temperature: Int
     let pressure: Int
     let humidity: Int
-    let description: String
+    let descr: String
     let icon: String
     
     // Инициализируем структуру
@@ -21,7 +21,7 @@ struct Weather {
         self.temperature = temperature
         self.pressure = pressure
         self.humidity = humidity
-        self.description = description
+        self.descr = description
         self.icon = icon
     }
 }

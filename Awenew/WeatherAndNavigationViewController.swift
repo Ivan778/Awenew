@@ -206,5 +206,4 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
             self.gotLocation = true
         }
     }
-
 }

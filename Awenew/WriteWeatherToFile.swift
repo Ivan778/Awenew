@@ -1,6 +1,6 @@
 //
 //  WriteWeatherToFile.swift
-//  WeatherApp
+//  Awenew
 //
 //  Created by Иван on 04.05.17.
 //  Copyright © 2017 IvanCode. All rights reserved.

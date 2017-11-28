@@ -1,6 +1,6 @@
 //
 //  NewsLoaderViewController.swift
-//  WeatherApp
+//  Awenew
 //
 //  Created by Иван on 27.11.17.
 //  Copyright © 2017 IvanCode. All rights reserved.
