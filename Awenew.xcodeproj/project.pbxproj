@@ -10,6 +10,7 @@
 		2C2733841FCDE19A007A329D /* NewsReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2733831FCDE19A007A329D /* NewsReceiver.swift */; };
 		2C2733861FCDEF44007A329D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2733851FCDEF44007A329D /* News.swift */; };
 		2C2733881FCDF46C007A329D /* NewsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2733871FCDF46C007A329D /* NewsParser.swift */; };
+		2C27338A1FCE15DA007A329D /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2733891FCE15DA007A329D /* NewsViewController.swift */; };
 		2C29A2D41EB60A2E00F7DD74 /* WeatherReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */; };
 		2C29A2D61EB65CF700F7DD74 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29A2D51EB65CF700F7DD74 /* Weather.swift */; };
 		2C32BD0E1EBBB1A1004C282C /* WriteWeatherToFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C32BD0D1EBBB1A1004C282C /* WriteWeatherToFile.swift */; };
@@ -37,6 +38,7 @@
 		2C2733831FCDE19A007A329D /* NewsReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsReceiver.swift; sourceTree = "<group>"; };
 		2C2733851FCDEF44007A329D /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		2C2733871FCDF46C007A329D /* NewsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsParser.swift; sourceTree = "<group>"; };
+		2C2733891FCE15DA007A329D /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		2C29A2D31EB60A2E00F7DD74 /* WeatherReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherReceiver.swift; sourceTree = "<group>"; };
 		2C29A2D51EB65CF700F7DD74 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2C32BD0D1EBBB1A1004C282C /* WriteWeatherToFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteWeatherToFile.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				2CB5BE881FCACEEE00CAF68B /* WeatherSearchViewController.swift */,
 				2CA39EA31FCB65EF006B7FD0 /* NewsLoaderViewController.swift */,
 				2CD7E1471FCCA23B0043CFAE /* WeatherViewController.swift */,
+				2C2733891FCE15DA007A329D /* NewsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				2C5B135C1EB73878003CE904 /* Reachability.swift in Sources */,
 				2C32BD101EBBB272004C282C /* WriteAdressToFile.swift in Sources */,
 				2C32BD0E1EBBB1A1004C282C /* WriteWeatherToFile.swift in Sources */,
+				2C27338A1FCE15DA007A329D /* NewsViewController.swift in Sources */,
 				2C48148E1EB38EDC0076DE8C /* HistoryViewController.swift in Sources */,
 				2CA39EA41FCB65EF006B7FD0 /* NewsLoaderViewController.swift in Sources */,
 				2CD7E1481FCCA23B0043CFAE /* WeatherViewController.swift in Sources */,

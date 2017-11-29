@@ -19,7 +19,7 @@ class NewsParser {
                 if newsList.count >= 10 { break }
                 if let text = link.text {
                     if let url = link["href"] {
-                        newsList.append(News(newsName: text, newsURL: url))
+                        newsList.append(News(newsName: text, reserved: url))
                     }
                 }
             }
@@ -28,7 +28,7 @@ class NewsParser {
             var minus = 0
             
             for link in doc.xpath("//div[@class='results__content']/ul/li[1]/a") {
-                if index >= 9 { break }
+                if index > 9 { break }
                 if let date = link.text {
                     if !dateChecker(date: date) {
                         newsList.remove(at: index - minus)
@@ -47,7 +47,11 @@ class NewsParser {
         dateFormatter.dateFormat = "dd.MM.yyyy,"
         let myDate = dateFormatter.date(from: date)!
         
-        if (Date().timeIntervalSince(myDate) / 60 / 60) <= 72.0 {
+        dateFormatter.dateFormat = "dd"
+        let gotten = dateFormatter.string(from: myDate)
+        let current = dateFormatter.string(from: Date())
+        
+        if (Int(current)! - Int(gotten)!) <= 1 {
             return true
         } else {
             return false

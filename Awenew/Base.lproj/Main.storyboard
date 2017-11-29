@@ -113,7 +113,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2nU-xp-16N" id="uAM-oj-dom">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLm-K3-DeL">
@@ -308,7 +308,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UcS-hC-NCg" id="8UO-cu-EYN">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="521" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="La7-pB-lqy">
@@ -409,7 +409,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5nc-pt-c5C" id="xsW-PF-ms4">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="721" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PQQ-Zh-fYg">
@@ -513,7 +513,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oKY-jJ-fH5" id="bBQ-cc-3Zn">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="94.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="111" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4V-LI-Hnh">
@@ -538,10 +538,55 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Новости" id="Etb-Ma-J6S"/>
+                    <connections>
+                        <segue destination="9mz-T4-Lef" kind="show" identifier="segue" id="8KB-2m-v8i"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ilH-8V-kPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="855" y="-1216.9014084507041"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="UIC-UX-Lce">
+            <objects>
+                <viewController id="9mz-T4-Lef" customClass="NewsViewController" customModule="Awenew" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gQi-aT-lwI"/>
+                        <viewControllerLayoutGuide type="bottom" id="iY9-8r-FlB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LO5-9m-Qyf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQU-GD-nT7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Fap-kb-sta">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fap-kb-sta" firstAttribute="centerX" secondItem="LO5-9m-Qyf" secondAttribute="centerX" id="0lh-eF-PdV"/>
+                            <constraint firstItem="Fap-kb-sta" firstAttribute="centerY" secondItem="LO5-9m-Qyf" secondAttribute="centerY" id="Hnd-JN-8ez"/>
+                            <constraint firstItem="ZQU-GD-nT7" firstAttribute="leading" secondItem="LO5-9m-Qyf" secondAttribute="leading" id="Ozg-S3-lNx"/>
+                            <constraint firstAttribute="trailing" secondItem="ZQU-GD-nT7" secondAttribute="trailing" id="tdE-wF-fEe"/>
+                            <constraint firstAttribute="bottom" secondItem="ZQU-GD-nT7" secondAttribute="bottom" id="vMo-zp-DRW"/>
+                            <constraint firstItem="ZQU-GD-nT7" firstAttribute="top" secondItem="LO5-9m-Qyf" secondAttribute="top" id="vZp-21-ISA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="AXx-hU-IsS">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="isO-9y-yhj"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Fap-kb-sta" id="yLy-Yj-Pzl"/>
+                        <outlet property="webView" destination="ZQU-GD-nT7" id="X3f-eu-5SK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2dS-xP-QZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940.625" y="-1217.9577464788733"/>
         </scene>
         <!--Главная-->
         <scene sceneID="tUW-wA-SgW">

@@ -47,9 +47,13 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         if let tabArray = tabBarControllerItems {
             let tabBarItem1 = tabArray[0]
             let tabBarItem2 = tabArray[1]
+            let tabBarItem3 = tabArray[2]
+            let tabBarItem4 = tabArray[3]
             
             tabBarItem1.isEnabled = value
             tabBarItem2.isEnabled = value
+            tabBarItem3.isEnabled = value
+            tabBarItem4.isEnabled = value
         }
     }
     

@@ -10,18 +10,31 @@ import UIKit
 import Kanna
 
 class NewsLoaderViewController: UITableViewController, NewsReceiverDelegate {
+    weak var activityIndicator: UIActivityIndicatorView!
+    
     var newsReceiver: NewsReceiver!
     var news = [News]()
+    var newsNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        tableView.backgroundView = activityIndicator
+        self.activityIndicator = activityIndicator
+        
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
         
         newsReceiver = NewsReceiver(delegate: self)
         newsReceiver.getNewsHeadlines(searchString: "Беларусь")
     }
     
-    func loaded(html: String) {
-        print(html)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue" {
+            let controller = segue.destination as! NewsViewController
+            controller.newsURL = news[newsNumber].reserved
+        }
     }
 
     // MARK: - TableView delegate methods
@@ -34,7 +47,10 @@ class NewsLoaderViewController: UITableViewController, NewsReceiverDelegate {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+        newsNumber = indexPath.row
         
+        self.performSegue(withIdentifier: "segue", sender: self)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,11 +67,14 @@ class NewsLoaderViewController: UITableViewController, NewsReceiverDelegate {
         self.news = news
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.activityIndicator.isHidden = true
         }
     }
     
     func didNotGetNews(error: NSError) {
-        
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = true
+        }
     }
 
 }

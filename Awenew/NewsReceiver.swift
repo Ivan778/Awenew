@@ -37,4 +37,20 @@ class NewsReceiver {
             }
         }
     }
+    
+    func getNews(news: News) {
+        DispatchQueue.global(qos: .utility).async {
+            if let searchURL = URL(string: news.reserved) {
+                do {
+                    let html = try String(contentsOf: searchURL)
+                    print(html)
+                    self.delegate.didGetNews(news: NewsParser.parseNews(html: html))
+                } catch {
+                    self.delegate.didNotGetNews(error: NSError(domain: "Не могу загрузить новости (возможно, нет интернета)!", code: 404))
+                }
+            } else {
+                self.delegate.didNotGetNews(error: NSError(domain: "Проверьте правильность ссылки!", code: 404))
+            }
+        }
+    }
 }
