@@ -2,6 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>main</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Главная</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.IvanCode.Awenew.main</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>news</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Новости</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.IvanCode.Awenew.news</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>weather</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Поиск погоды</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.IvanCode.Awenew.weather</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>history</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>История запросов</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.IvanCode.Awenew.history</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

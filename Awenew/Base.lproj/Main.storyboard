@@ -265,13 +265,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1134" y="-12"/>
+            <point key="canvasLocation" x="-1133" y="356"/>
         </scene>
         <!--История-->
         <scene sceneID="LFw-PV-hHi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sfR-Zr-Nxl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="История" image="list" id="cPa-gy-q4n"/>
+                <navigationController storyboardIdentifier="HistoryVC" automaticallyAdjustsScrollViewInsets="NO" id="sfR-Zr-Nxl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="История" image="history" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R8U-BW-F17">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -362,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hli-TW-g9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-139" y="1125"/>
+            <point key="canvasLocation" x="909" y="1146"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="Iol-Ce-s95">
@@ -504,12 +504,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4v-6W-i2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909.375" y="1125"/>
+            <point key="canvasLocation" x="1941" y="1146"/>
         </scene>
         <!--Новости-->
         <scene sceneID="VnE-uJ-2TQ">
             <objects>
-                <tableViewController id="icH-Uz-4d6" customClass="NewsLoaderViewController" customModule="Awenew" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NewsVC" id="icH-Uz-4d6" customClass="NewsLoaderViewController" customModule="Awenew" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="obg-dy-7pR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -603,8 +603,8 @@
         <!--Главная-->
         <scene sceneID="tUW-wA-SgW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H4R-cU-dL7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Главная" image="compass" id="Gj1-aO-Gcd"/>
+                <navigationController storyboardIdentifier="MainVC" automaticallyAdjustsScrollViewInsets="NO" id="H4R-cU-dL7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Главная" image="main" id="Gj1-aO-Gcd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z1F-Tg-M6Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -622,7 +622,7 @@
         <!--Погода-->
         <scene sceneID="KVS-Qp-F2Y">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kCf-di-MSU" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WeatherVC" automaticallyAdjustsScrollViewInsets="NO" id="kCf-di-MSU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Погода" image="weather" id="HqL-mq-eM0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1J0-BV-uYl">
@@ -636,7 +636,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h5c-rZ-l1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1134.375" y="1125"/>
+            <point key="canvasLocation" x="-143" y="1147"/>
         </scene>
         <!--Новости-->
         <scene sceneID="7hf-Tm-mK5">
@@ -659,8 +659,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="compass" width="24" height="24"/>
-        <image name="list" width="24" height="24"/>
+        <image name="history" width="24" height="24"/>
+        <image name="main" width="24" height="24"/>
         <image name="news" width="27" height="27"/>
         <image name="weather" width="27" height="27"/>
     </resources>
