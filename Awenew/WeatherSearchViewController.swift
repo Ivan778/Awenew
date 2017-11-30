@@ -103,6 +103,10 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
         let searchItemLabel = cell.viewWithTag(521) as! UILabel
         searchItemLabel.text = Array(searchItems.keys)[indexPath.row]
         
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 60 / 255, green: 65 / 255, blue: 92 / 255, alpha: 1)
+        cell.selectedBackgroundView = bgColorView
+        
         return cell
     }
     

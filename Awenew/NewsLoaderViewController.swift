@@ -107,6 +107,10 @@ class NewsLoaderViewController: UITableViewController, NewsReceiverDelegate {
 
         let date = cell.viewWithTag(111) as! UILabel
         date.text = news[indexPath.row].newsName
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 60 / 255, green: 65 / 255, blue: 92 / 255, alpha: 1)
+        cell.selectedBackgroundView = bgColorView
 
         return cell
     }

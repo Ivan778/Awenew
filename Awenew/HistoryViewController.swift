@@ -47,6 +47,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableWithHistory.dequeueReusableCell(withIdentifier: "RequestItem", for: indexPath)
         
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 60 / 255, green: 65 / 255, blue: 92 / 255, alpha: 1)
+        cell.selectedBackgroundView = bgColorView
+        
         let row = indexPath.row
         
         let dateLabel = cell.viewWithTag(1000) as! UILabel
