@@ -76,7 +76,7 @@ class WeatherReceiver {
             }
         }
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetWeather!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
@@ -113,7 +113,7 @@ class WeatherReceiver {
             }
         }
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetForecast!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))

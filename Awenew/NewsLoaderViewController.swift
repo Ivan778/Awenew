@@ -10,30 +10,77 @@ import UIKit
 import Kanna
 
 class NewsLoaderViewController: UITableViewController, NewsReceiverDelegate {
-    weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    var activityIndicator: UIActivityIndicatorView!
     
     var newsReceiver: NewsReceiver!
     var news = [News]()
     var newsNumber = 0
     
+    var gotIt = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.hidesWhenStopped = true
         tableView.backgroundView = activityIndicator
-        self.activityIndicator = activityIndicator
         
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
         
         newsReceiver = NewsReceiver(delegate: self)
-        newsReceiver.getNewsHeadlines(searchString: "Беларусь")
+        loadNews()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(statusManager), name: .flagsChanged, object: Network.reachability)
+    }
+    
+    func loadNews() {
+        let searchPhrase = UserDefaults.standard.string(forKey: "searchPhrase")
+        
+        if Reachability.isConnectedToNetworkNow() {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+            if (searchPhrase != nil) {
+                newsReceiver.getNewsHeadlines(searchString: searchPhrase!)
+            } else {
+                newsReceiver.getNewsHeadlines(searchString: "новости")
+            }
+            
+        } else {
+            presentAlert(title: "Ошибка!", message: "Проверьте соединение с интернетом.")
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    @IBAction func refreshButtonClicked(_ sender: Any) {
+        loadNews()
+    }
+    
+    // MARK: - Reachability notification
+    func statusManager(_ notification: Notification) {
+        let searchPhrase = UserDefaults.standard.string(forKey: "searchPhrase")
+        
+        if (!gotIt && (Network.reachability?.isReachable)!) {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+            if (searchPhrase != nil) {
+                newsReceiver.getNewsHeadlines(searchString: searchPhrase!)
+            } else {
+                newsReceiver.getNewsHeadlines(searchString: "новости")
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue" {
             let controller = segue.destination as! NewsViewController
-            controller.newsURL = news[newsNumber].reserved
+            controller.news = news[newsNumber]
         }
     }
 
@@ -65,15 +112,20 @@ class NewsLoaderViewController: UITableViewController, NewsReceiverDelegate {
     // MARK: - NewsReceiver delegate methods
     func didGetNews(news: [News]) {
         self.news = news
+        gotIt = true
+        
+        if news.count == 0 {
+            presentAlert(title: "Извините!", message: "По данному региону нет новостей")
+        }
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
     
     func didNotGetNews(error: NSError) {
         DispatchQueue.main.async {
-            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
 

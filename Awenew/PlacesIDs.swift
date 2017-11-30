@@ -49,7 +49,7 @@ class PlacesIDs {
             }
         }
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetList(error: NSError(domain: "Нет соединения с интернетом!", code: 404))

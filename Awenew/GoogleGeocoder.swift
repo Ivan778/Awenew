@@ -54,7 +54,7 @@ class GoogleGeocoder {
         }
         
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetCoordinates!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))
@@ -104,6 +104,9 @@ class GoogleGeocoder {
                         }
                     }
                     
+                    UserDefaults.standard.set(city, forKey: "searchPhrase")
+                    UserDefaults.standard.synchronize()
+                    
                     // Отправляем данные в WeatherAndNavigationViewController
                     self.delegate.didGetAdress!(adress: [adress, city])
                     
@@ -115,7 +118,7 @@ class GoogleGeocoder {
             }
         }
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             dataTask.resume()
         } else {
             self.delegate.didNotGetAdress!(error: NSError(domain: "Нет соединения с интернетом!", code: 404))

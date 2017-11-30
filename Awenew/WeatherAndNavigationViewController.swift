@@ -10,17 +10,11 @@ import UIKit
 import CoreLocation
 
 class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDelegate, WeatherReceiverDelegate, GoogleGeocoderDelegate {
-    // Ссылка на Label, который будет отображать широту
     @IBOutlet weak var latitudeLabel: UILabel!
-    // Ссылка на Label, который будет отображать адрес местоположения пользователя
     @IBOutlet weak var adressLabel: UILabel!
-    // Ссылка на Label, который будет отображать температуру
     @IBOutlet weak var temperatureAndDescriptionLabel: UILabel!
-    // Ссылка на Label, который будет отображать значение влажности
     @IBOutlet weak var humidityLabel: UILabel!
-    // Ссылка на Label, который будет отображать значение давления
     @IBOutlet weak var pressureLabel: UILabel!
-    // Ссылка на ImageView, который будет отображать картинку погоды
     @IBOutlet weak var weatherIconImageView: UIImageView!
     
     // Нужно для локации
@@ -33,29 +27,15 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     var wroteWeather = false
     var wroteLocation = false
     
+    var gotWeather = false
+    var gotAddress = false
+    
     // Для получения погоды
     var weather: WeatherReceiver!
     // Для получения адреса
     var reverseGeocoder: GoogleGeocoder!
     
     let group = DispatchGroup()
-    
-    // Блокирует/разблокирует кнопки TabBar
-    func lockUnlockBarButtons(value: Bool) {
-        let tabBarControllerItems = self.tabBarController?.tabBar.items
-        
-        if let tabArray = tabBarControllerItems {
-            let tabBarItem1 = tabArray[0]
-            let tabBarItem2 = tabArray[1]
-            let tabBarItem3 = tabArray[2]
-            let tabBarItem4 = tabArray[3]
-            
-            tabBarItem1.isEnabled = value
-            tabBarItem2.isEnabled = value
-            tabBarItem3.isEnabled = value
-            tabBarItem4.isEnabled = value
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +57,56 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
             self.lockUnlockBarButtons(value: true)
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(statusManager), name: .flagsChanged, object: Network.reachability)
+        updateUserInterface()
     }
     
-    // Записывает в latitudeLabel и longitudeLabel широту и долготу
+    @IBAction func refreshButtonClicked(_ sender: Any) {
+        locationManager.startUpdatingLocation()
+    }
+    
+    // MARK: - Reachability notification
+    func updateUserInterface() {
+        if ((!gotWeather || !gotAddress || !gotLocation) && (Network.reachability?.isReachable)!) {
+            //lockUnlockBarButtons(value: false)
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func statusManager(_ notification: Notification) {
+        updateUserInterface()
+    }
+    
+    // MARK: - View update methods
+    func showLocationServicesDeniedAlert() {
+        let title = "Нет доступа к геолокации"
+        let message = "Пожалуйста, дайте приложению доступ к геолокационным данным."
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func lockUnlockBarButtons(value: Bool) {
+        DispatchQueue.main.async {
+            let tabBarControllerItems = self.tabBarController?.tabBar.items
+            
+            if let tabArray = tabBarControllerItems {
+                let tabBarItem1 = tabArray[0]
+                let tabBarItem2 = tabArray[1]
+                let tabBarItem3 = tabArray[2]
+                let tabBarItem4 = tabArray[3]
+                
+                tabBarItem1.isEnabled = value
+                tabBarItem2.isEnabled = value
+                tabBarItem3.isEnabled = value
+                tabBarItem4.isEnabled = value
+            }
+        }
+    }
+    
     func updateLabels() {
         if let loc = location {
             latitudeLabel.text = String(format: "%.7f", loc.coordinate.latitude) + ", " + String(format: "%.7f", loc.coordinate.longitude)
@@ -88,8 +115,9 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         }
     }
     
-    // Принимает данные о погоде и выводит их на экран
+    // MARK: - WeatherReceiver delegate methods
     func didGetWeather(weather: Weather) {
+        gotWeather = true
         DispatchQueue.global(qos: .userInitiated).async {
             if self.wroteWeather == false {
                 DispatchQueue.main.async {
@@ -112,7 +140,6 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         }
     }
     
-    // Принимает данные об ошибке, из-за которой не была определена погода, и выводит её на экран
     func didNotGetWeather(error: NSError) {
         // Выводим причину ошибки
         print(error)
@@ -125,8 +152,9 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         self.group.leave()
     }
     
-    // Принимает адрес и выводит его на экран
+    // MARK: - GoogleGeocoder delegate methods
     func didGetAdress(adress: [String]) {
+        gotAddress = true
         DispatchQueue.global(qos: .userInitiated).async {
             if self.wroteLocation == false {
                 DispatchQueue.main.async {
@@ -145,7 +173,6 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         }
     }
     
-    // Принимает данные об ошибке, из-за которой не был определён адрес, и выводит её на экран
     func didNotGetAdress(error: NSError) {
         // Выводим причину ошибки
         print(error)
@@ -156,21 +183,7 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         self.group.leave()
     }
     
-    // Сообщает пользователю информацию о том, что приложение не имеет доступа к геолокации
-    func showLocationServicesDeniedAlert() {
-        let title = "Нет доступа к геолокации"
-        let message = "Пожалуйста, дайте приложению доступ к геолокационным данным."
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     // MARK: - CLLocationManagerDelegate
-    
-    // Срабатывает в том случае, если не были определены координаты. Выводит информацию об ошибке
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError \(error)")
         
@@ -182,7 +195,6 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         lockUnlockBarButtons(value: true)
     }
     
-    // Срабатывает при успешном получении координат
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // Запомнили местоположение
         location = locations[0]
@@ -192,7 +204,7 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
         // Отображаем изменения на экране
         updateLabels()
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             // Получает погоду по широте и долготе
             self.weather.getWeather(latitude: String(format: "%.3f", (self.location?.coordinate.latitude)!), longitude: String(format: "%.3f", (self.location?.coordinate.longitude)!))
             self.group.enter()

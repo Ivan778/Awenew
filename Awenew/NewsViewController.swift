@@ -12,14 +12,16 @@ class NewsViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var newsURL: String?
+    var news: News?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = (news?.newsName)!
+        
         webView.delegate = self
         
-        let url = NSURL (string: newsURL!);
+        let url = NSURL (string: (news?.reserved)!);
         let request = NSURLRequest(url: url! as URL);
         self.webView.loadRequest(request as URLRequest);
     }

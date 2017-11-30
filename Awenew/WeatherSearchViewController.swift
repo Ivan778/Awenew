@@ -63,19 +63,11 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     // MARK: - SearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             self.placesReceiver.getListOfItems(searchPhrase: searchBar.text!)
             self.activityIndicator.isHidden = false
         } else {
@@ -111,7 +103,7 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
         
-        if Reachability.isConnectedToNetwork() {
+        if Reachability.isConnectedToNetworkNow() {
             self.activityIndicator.isHidden = false
             self.selectedItemNumber = indexPath.row
             self.coordinatesReceiver.getCoordinatesByID(ID: Array(self.searchItems.values)[indexPath.row])

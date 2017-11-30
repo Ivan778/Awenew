@@ -8,7 +8,17 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WeatherReceiverDelegate {
+extension UIViewController {
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+class WeatherViewController: UIViewController, UITableViewDataSource, WeatherReceiverDelegate {
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
@@ -27,7 +37,6 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
         tableView.dataSource = self
         
         self.weatherIcon.image = UIImage(named: (weather?.icon)!)
@@ -39,15 +48,6 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         forecast = WeatherReceiver(delegate: self)
         forecast.getForecast(coordinates: coordinates!)
         activityIndicator.isHidden = false
-    }
-    
-    // MARK: - Alert call method
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - TableView delegate methods
