@@ -27,7 +27,9 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarTitleColor()
         setDoneOnKeyboard()
+        searchBar.keyboardAppearance = .dark
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,9 +42,13 @@ class WeatherSearchViewController: UIViewController, UITableViewDelegate, UITabl
     
     func setDoneOnKeyboard() {
         let keyboardToolbar = UIToolbar()
+        keyboardToolbar.tintColor = UIColor(red: 108 / 255, green: 166 / 255, blue: 167 / 255, alpha: 1)
+        keyboardToolbar.barTintColor = UIColor(red: 35 / 255, green: 38 / 255, blue: 53 / 255, alpha: 1)
         keyboardToolbar.sizeToFit()
+        
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         self.searchBar.inputAccessoryView = keyboardToolbar
     }

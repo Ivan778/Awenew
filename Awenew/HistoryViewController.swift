@@ -23,6 +23,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarTitleColor()
+        
         // Загружаем все элементы
         allItems = FileProcessor.loadChecklistItems(key: "PreviousRequests")
         

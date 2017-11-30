@@ -17,31 +17,22 @@ extension AppDelegate {
     }
     
     func setInitialViewController(initialViewControllerIndex: Int) {
-        /*
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: initialViewControllerID)
-        
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
- */
         let tabBarController = self.window?.rootViewController as! UITabBarController
         tabBarController.selectedIndex = initialViewControllerIndex
         
     }
     
     func handleQuickAction(shortcutItem: UIApplicationShortcutItem) -> Bool {
-        var quickActionHandled = false
         let type = shortcutItem.type.components(separatedBy: ".").last!
         if let shortcutType = Shortcut.init(rawValue: type) {
             switch shortcutType {
-                case .main: setInitialViewController(initialViewControllerIndex: 0); quickActionHandled = true; break;
-                case .news: setInitialViewController(initialViewControllerIndex: 1); quickActionHandled = true; break;
-                case .weather: setInitialViewController(initialViewControllerIndex: 2); quickActionHandled = true; break;
-                case .history: setInitialViewController(initialViewControllerIndex: 3); quickActionHandled = true; break;
+                case .main: setInitialViewController(initialViewControllerIndex: 0); return true
+                case .news: setInitialViewController(initialViewControllerIndex: 1); return true
+                case .weather: setInitialViewController(initialViewControllerIndex: 2); return true
+                case .history: setInitialViewController(initialViewControllerIndex: 3); return true
             }
         }
-        return quickActionHandled
+        return false
     }
 }
 

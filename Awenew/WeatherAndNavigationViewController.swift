@@ -9,6 +9,13 @@
 import UIKit
 import CoreLocation
 
+extension UIViewController {
+    func setNavigationBarTitleColor() {
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 108 / 255, green: 166 / 255, blue: 167 / 255, alpha: 1)]
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 108 / 255, green: 166 / 255, blue: 167 / 255, alpha: 1)
+    }
+}
+
 class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDelegate, WeatherReceiverDelegate, GoogleGeocoderDelegate {
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var adressLabel: UILabel!
@@ -39,6 +46,8 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationBarTitleColor()
         
         // Блокируем кнопки TabBar, чтобы пользователь не мог перейти, когда осуществляется подгрузка данных о погоде
         lockUnlockBarButtons(value: false)

@@ -37,6 +37,8 @@ class WeatherViewController: UIViewController, UITableViewDataSource, WeatherRec
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarTitleColor()
+        
         tableView.dataSource = self
         
         self.weatherIcon.image = UIImage(named: (weather?.icon)!)

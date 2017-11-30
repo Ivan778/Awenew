@@ -22,6 +22,8 @@ class NewsLoaderViewController: UITableViewController, NewsReceiverDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarTitleColor()
+        
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         activityIndicator.hidesWhenStopped = true
         tableView.backgroundView = activityIndicator

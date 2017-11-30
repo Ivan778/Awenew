@@ -13,12 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let tabBarController = self.window?.rootViewController as! UITabBarController
+        tabBarController.tabBar.tintColor = UIColor(red: 108 / 255, green: 166 / 255, blue: 167 / 255, alpha: 1)
+        tabBarController.tabBar.backgroundColor = UIColor(red: 35 / 255, green: 38 / 255, blue: 53 / 255, alpha: 1)
+        
         reachabilityCheck()
         return true
     }
     
+    // Настройка 3D Touch
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        // Handle quick actions
         completionHandler(handleQuickAction(shortcutItem: shortcutItem))
     }
     

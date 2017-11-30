@@ -17,6 +17,8 @@ class NewsViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarTitleColor()
+        
         self.title = (news?.newsName)!
         
         webView.delegate = self
