@@ -153,7 +153,7 @@ class WeatherReceiver {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let myDate = dateFormatter.date(from: date)!
         
-        dateFormatter.dateFormat = "dd MMMM, HH:mm"
+        dateFormatter.dateFormat = "EEEE, HH:mm"
         return dateFormatter.string(from: myDate)
     }
     

@@ -222,6 +222,8 @@ class WeatherAndNavigationViewController: UIViewController, CLLocationManagerDel
             self.group.enter()
             
             self.gotLocation = true
+        } else {
+            presentAlert(title: "Ошибка!", message: "Проверьте соединение с интернетом.")
         }
     }
 }

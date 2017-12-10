@@ -78,13 +78,7 @@
                             <constraint firstItem="ufX-jn-Sfa" firstAttribute="top" secondItem="4mN-y0-PEG" secondAttribute="bottom" constant="8" id="vLM-M3-1vN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Главная" id="Ch1-h2-6RG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="qlY-Bd-tVv">
-                            <connections>
-                                <action selector="refreshButtonClicked:" destination="9pv-A4-QxB" id="Z1m-IZ-6R5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Главная" id="Ch1-h2-6RG"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="adressLabel" destination="4mN-y0-PEG" id="6CZ-Jf-4Ux"/>
