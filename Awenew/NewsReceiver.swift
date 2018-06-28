@@ -25,7 +25,7 @@ class NewsReceiver {
         let url = String("\(baseURL)\(searchString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")
         
         DispatchQueue.global(qos: .utility).async {
-            if let searchURL = URL(string: url!) {
+            if let searchURL = URL(string: url) {
                 do {
                     let html = try String(contentsOf: searchURL)
                     self.delegate.didGetNews(news: NewsParser.parseNews(html: html))

@@ -11,7 +11,7 @@ import CoreLocation
 
 extension UIViewController {
     func setNavigationBarTitleColor() {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 108 / 255, green: 166 / 255, blue: 167 / 255, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [kCTForegroundColorAttributeName: UIColor(red: 108 / 255, green: 166 / 255, blue: 167 / 255, alpha: 1)] as [NSAttributedStringKey : Any]
         self.navigationController?.navigationBar.tintColor = UIColor(red: 108 / 255, green: 166 / 255, blue: 167 / 255, alpha: 1)
     }
 }

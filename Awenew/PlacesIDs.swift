@@ -25,7 +25,7 @@ class PlacesIDs {
     }
     
     func getListOfItems(searchPhrase: String) {
-        let url = String("\(baseURL)\(APIKey)\(field)\(searchPhrase.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")!
+        let url = "\(baseURL)\(APIKey)\(field)\(searchPhrase.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
         
         let session = URLSession.shared
         let getCoordinatesSession = URL(string: url)!

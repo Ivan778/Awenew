@@ -28,7 +28,7 @@ class GoogleGeocoder {
     }
     
     func getCoordinatesByID(ID: String) {
-        let url = String("\(googleMapsGeocoderBaseURL)\(placeId)\(ID)&key=\(googleMapsGeocoderAPIKey)")!
+        let url = "\(googleMapsGeocoderBaseURL)\(placeId)\(ID)&key=\(googleMapsGeocoderAPIKey)"
         
         let session = URLSession.shared
         let getCoordinatesSession = URL(string: url)!
@@ -63,7 +63,7 @@ class GoogleGeocoder {
     }
     
     func getAddress(latitude: String, longitude: String) {
-        let url = String("\(googleMapsGeocoderBaseURL)\(latLon)\(latitude),\(longitude)&key=\(googleMapsGeocoderAPIKey)")!
+        let url = "\(googleMapsGeocoderBaseURL)\(latLon)\(latitude),\(longitude)&key=\(googleMapsGeocoderAPIKey)"
         
         let session = URLSession.shared
         let reverseGeocoderURLSession = URL(string: url)!

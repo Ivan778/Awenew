@@ -31,7 +31,7 @@ class WeatherReceiver {
         let session = URLSession.shared
         
         // Ссылка на запрос погоды по широте и долготе
-        let url = String("\(openWeatherBaseURL)\(field1)lat=\(String(latitude)!)&lon=\(String(longitude)!)&APPID=\(openWeatherAPIKey)")!
+        let url = "\(openWeatherBaseURL)\(field1)lat=\(latitude)&lon=\(longitude)&APPID=\(openWeatherAPIKey)"
         let weatherURLSession = URL(string: url)!
         
         // Запрашиваем JSON с данными о погоде
@@ -87,7 +87,7 @@ class WeatherReceiver {
         let session = URLSession.shared
         
         // Ссылка на запрос погоды по широте и долготе
-        let url = String("\(openWeatherBaseURL)\(field2)units=metric&lat=\(String(coordinates[0])!)&lon=\(String(coordinates[1])!)&APPID=\(openWeatherAPIKey)")!
+        let url = "\(openWeatherBaseURL)\(field2)units=metric&lat=\(coordinates[0])&lon=\(coordinates[1])&APPID=\(openWeatherAPIKey)"
         let weatherURLSession = URL(string: url)!
         
         // Запрашиваем JSON с данными о погоде
